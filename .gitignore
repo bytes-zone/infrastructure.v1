@@ -1,1 +1,3 @@
 /terraform/.terraform/
+/terraform/keys/gitea.id_rsa
+/terraform/terraform.tfvars
