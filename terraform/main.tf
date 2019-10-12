@@ -8,3 +8,13 @@ terraform {
     }
   }
 }
+
+# PROVIDERS
+
+variable "digitalocean_token" {}
+
+provider "digitalocean" {
+  version = "~> 1.9"
+
+  token = "${var.digitalocean_token}"
+}
