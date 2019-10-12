@@ -8,5 +8,5 @@ let
 in with nixpkgs;
 stdenv.mkDerivation {
   name = "gitea-experiment";
-  buildInputs = [ niv.niv git terraform ];
+  buildInputs = [ niv.niv git terraform graphviz ];
 }
