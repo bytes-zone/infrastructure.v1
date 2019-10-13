@@ -34,4 +34,21 @@
       ensurePermissions = { "DATABASE gitea" = "ALL PRIVILEGES"; };
     }];
   };
+
+  # Gitea
+  services.gitea = {
+    enable = true;
+    package = pkgs.gitea;
+
+    repositoryRoot = "/mnt/objects/gitea/repositories";
+    stateDir = "/mnt/objects/gitea";
+
+    # only for people I invite!
+    # disableRegistration = true;
+
+    # TODO: dump.enable, dump.interval
+
+    # TODO: db.*
+  };
+  networking.firewall.allowedTCPPorts = [ 3000 ];
 }
