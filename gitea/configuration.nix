@@ -23,6 +23,7 @@
     identMap = ''
       nixos root     postgres
       nixos postgres postgres
+      nixos gitea    gitea
     '';
     authentication = "local all all ident map=nixos";
     enableTCPIP = false;
@@ -43,12 +44,16 @@
     repositoryRoot = "/mnt/objects/gitea/repositories";
     stateDir = "/mnt/objects/gitea";
 
+    database = {
+      user = "gitea";
+      name = "gitea";
+      type = "postgres";
+    };
+
     # only for people I invite!
     # disableRegistration = true;
 
     # TODO: dump.enable, dump.interval
-
-    # TODO: db.*
   };
   networking.firewall.allowedTCPPorts = [ 3000 ];
 }
