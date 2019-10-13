@@ -51,7 +51,7 @@
     };
 
     # only for people I invite!
-    # disableRegistration = true;
+    disableRegistration = true;
 
     # TODO: dump.enable, dump.interval
   };
