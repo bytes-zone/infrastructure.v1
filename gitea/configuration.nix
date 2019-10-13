@@ -18,7 +18,16 @@
     package = pkgs.postgresql_11;
 
     dataDir = "/mnt/db/data";
+
+    # security
+    identMap = ''
+      nixos root     postgres
+      nixos postgres postgres
+    '';
+    authentication = "local all all ident map=nixos";
     enableTCPIP = false;
+
+    # initial setup
     ensureDatabases = [ "gitea" ];
     ensureUsers = [{
       name = "gitea";
