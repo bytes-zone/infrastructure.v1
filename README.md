@@ -17,3 +17,8 @@ Contact Brian for access to the remote states and the with-great-power-comes-gre
 To update software versions, run `niv update`.
 
 For making changes to instances after provision, see instructions in `gitea`.
+
+## License
+
+Feel free to use this for learning purposes, but any other use needs my explicit permission.
+See `LICENSE`.
