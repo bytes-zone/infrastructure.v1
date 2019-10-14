@@ -14,4 +14,6 @@ These are the configs and infra stuff for this site (name TBD)!
 If you're working with Terraform stuff, `cd terraform && terraform init`.
 Contact Brian for access to the remote states and the with-great-power-comes-great-responsibility speech.
 
+To update software versions, run `niv update`.
+
 For making changes to instances after provision, see instructions in `gitea`.
