@@ -62,7 +62,28 @@
     # only for people I invite!
     disableRegistration = true;
 
-    # TODO: dump.enable, dump.interval
+    extraConfig = ''
+      [ui]
+      DEFAULT_THEME = arc-green
+
+      [server]
+      ; START_SSH_SERVER = true
+      ; SSH_PORT = 22
+
+      LANDING_PAGE = explore
+
+      LFS_START_SERVER = true
+      LFS_CONTENT_PATH = /mnt/objects/gitea/lfs
+
+      [attachment]
+      ENABLED = true
+      PATH = /mnt/objects/gitea/attachments
+
+      [other]
+      SHOW_FOOTER_BRANDING = false
+    '';
+
+    # TODO: mailer settings
   };
 
   # Nginx reverse proxy
