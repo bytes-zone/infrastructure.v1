@@ -17,8 +17,8 @@
   networking.firewall.allowedTCPPorts = [
     22
     80
-    2200
-    3000 # gitea, for now
+    2200 # admin ssh
+    2222 # gitea ssh
   ];
 
   # PostgreSQL
@@ -67,8 +67,8 @@
       DEFAULT_THEME = arc-green
 
       [server]
-      ; START_SSH_SERVER = true
-      ; SSH_PORT = 22
+      START_SSH_SERVER = true
+      SSH_PORT = 2222
 
       LANDING_PAGE = explore
 
