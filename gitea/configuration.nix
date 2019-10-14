@@ -15,7 +15,6 @@
   # Security Stuff
   services.openssh.ports = [ 2200 ];
   networking.firewall.allowedTCPPorts = [
-    22
     80
     2200 # admin ssh
     2222 # gitea ssh
