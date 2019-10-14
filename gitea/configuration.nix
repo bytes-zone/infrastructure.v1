@@ -100,4 +100,16 @@
       locations."/" = { proxyPass = "http://localhost:3000"; };
     };
   };
+
+  # backups
+  services.duplicity = {
+    enable = true;
+    root = "/mnt/objects/gitea";
+    targetUrl = "file:///mnt/backups/gitea";
+  };
+  services.postgresqlBackup = {
+    enable = true;
+    backupAll = true;
+    location = "/mnt/backups/postgresql";
+  };
 }
