@@ -63,7 +63,7 @@
 
     extraConfig = ''
       [ui]
-      DEFAULT_THEME = arc-green
+      DEFAULT_THEME = gitea
 
       [server]
       START_SSH_SERVER = true
