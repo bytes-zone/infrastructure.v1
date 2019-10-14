@@ -1,0 +1,12 @@
+While I figure out how I want to do open source licensing going forward, this
+is source-available but without any grant of usage.
+
+If you want to use this code, it's probably fine, but ask first.
+
+TL;DR: I want to provide the product of my labor to people and organizations
+who are working for the benefit of humanity. This excludes, for example, ICE.
+The Hippocratic License[1] is promising but I have heard from legal folks that
+it does not offer as good protections as (e.g.) BSD 3-Clause. I'll probably end
+up with something *like* that, though.
+
+[1]: https://firstdonoharm.dev
