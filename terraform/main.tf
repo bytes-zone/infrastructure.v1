@@ -46,6 +46,15 @@ resource "digitalocean_volume" "gitea_objects" {
   region                   = "${var.region}"
 }
 
+resource "digitalocean_volume" "gitea_backups" {
+  name                     = "gitea_backups"
+  size                     = 15
+  description              = "backup staging area for gitea services"
+  initial_filesystem_type  = "ext4"
+  initial_filesystem_label = "backups"
+  region                   = "${var.region}"
+}
+
 resource "digitalocean_droplet" "gitea" {
   name      = "gitea"
   region    = "${var.region}"
@@ -58,6 +67,7 @@ resource "digitalocean_droplet" "gitea" {
   volume_ids = [
     "${digitalocean_volume.gitea_db.id}",
     "${digitalocean_volume.gitea_objects.id}",
+    "${digitalocean_volume.gitea_backups.id}",
   ]
 }
 
@@ -68,5 +78,6 @@ resource "digitalocean_project" "git" {
     "${digitalocean_droplet.gitea.urn}",
     "${digitalocean_volume.gitea_db.urn}",
     "${digitalocean_volume.gitea_objects.urn}",
+    "${digitalocean_volume.gitea_backups.urn}",
   ]
 }
