@@ -15,6 +15,8 @@
   # Security Stuff
   services.openssh.ports = [ 2200 ];
   networking.firewall.allowedTCPPorts = [
+    22
+    80
     2200
     3000 # gitea, for now
   ];
@@ -61,5 +63,21 @@
     disableRegistration = true;
 
     # TODO: dump.enable, dump.interval
+  };
+
+  # Nginx reverse proxy
+  services.nginx = {
+    enable = true;
+    package = pkgs.nginxMainline;
+    enableReload = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
+    virtualHosts."167.99.156.113" = {
+      default = true;
+      locations."/" = { proxyPass = "http://localhost:3000"; };
+    };
   };
 }
