@@ -111,8 +111,8 @@ resource "cloudflare_record" "git_bytes_zone" {
   name    = "git"
   type    = "A"
   value   = "${digitalocean_droplet.gitea.ipv4_address}"
-  ttl     = 1 # automatic
-  proxied = true
+  ttl     = 1     # automatic
+  proxied = false # git push over SSH doesn't work otherwise
 }
 
 # Mail
