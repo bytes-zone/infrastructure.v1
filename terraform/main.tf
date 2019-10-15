@@ -114,3 +114,49 @@ resource "cloudflare_record" "git_bytes_zone" {
   ttl     = 1 # automatic
   proxied = true
 }
+
+# Mail
+
+resource "mailgun_domain" "git_byte_zone" {
+  name = "${cloudflare_record.git_bytes_zone.hostname}"
+}
+
+resource "cloudflare_record" "git_byte_zone_spf" {
+  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  name    = "git"
+  type    = "TXT"
+  value   = "v=spf1 include:mailgun.org ~all"
+  ttl     = 1 # automatic
+}
+
+resource "cloudflare_record" "git_byte_zone_domainkey" {
+  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  name    = "krs._domainkey.git"
+  type    = "TXT"
+  value   = "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpfR8oepBuDvnRoMBaMZBNHthNzTslWvBZK1zBq/R00xo4ecVMLhCRBa2qCKaw38GwDi8ixrRaABqdWZc1u+74T85Mt/fjzox9MepP6c0+nsMcCdZb4wt7qq/ma8ZeQ4YJuh+ne0UUg/osjgU1DDxNwdldIrCGmvGJRAQDcsTwFQIDAQAB"
+  ttl     = 1 # automatic
+}
+
+resource "cloudflare_record" "git_byte_zone_mxa" {
+  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  name    = "git"
+  type    = "MX"
+  value   = "mxa.mailgun.org"
+  ttl     = 1 # automatic
+}
+
+resource "cloudflare_record" "git_byte_zone_mxb" {
+  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  name    = "git"
+  type    = "MX"
+  value   = "mxb.mailgun.org"
+  ttl     = 1 # automatic
+}
+
+resource "cloudflare_record" "git_byte_zone_return" {
+  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  name    = "email.git"
+  type    = "CNAME"
+  value   = "mailgun.org"
+  ttl     = 1 # automatic
+}
