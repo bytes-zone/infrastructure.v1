@@ -15,9 +15,9 @@
   # Security Stuff
   services.openssh.ports = [ 2200 ];
   networking.firewall.allowedTCPPorts = [
+    22 # gitea ssh
     80
     2200 # admin ssh
-    2222 # gitea ssh
   ];
 
   # PostgreSQL
@@ -67,7 +67,7 @@
 
       [server]
       START_SSH_SERVER = true
-      SSH_PORT = 2222
+      SSH_PORT = 22
 
       LANDING_PAGE = explore
 
@@ -83,6 +83,10 @@
     '';
 
     # TODO: mailer settings
+  };
+  systemd.services.gitea.serviceConfig = {
+    AmbientCapabilities = "cap_net_bind_service";
+    CapabilityBoundingSet = "cap_net_bind_service";
   };
 
   # Nginx reverse proxy
