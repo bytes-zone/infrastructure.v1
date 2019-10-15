@@ -106,7 +106,7 @@
       default = true;
 
       enableACME = true;
-      addSSL = true; # TODO: forceSSL once ACME works
+      forceSSL = true;
 
       locations."/" = { proxyPass = "http://localhost:3000"; };
     };
