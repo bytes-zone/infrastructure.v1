@@ -160,3 +160,18 @@ resource "cloudflare_record" "git_bytes_zone_return" {
   value   = "mailgun.org"
   ttl     = 1 # automatic
 }
+
+# SSL
+
+resource "cloudflare_record" "git_bytes_zone_caa" {
+  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  name    = "git"
+  type    = "CAA"
+  ttl     = 1 # automatic
+
+  data = {
+    flags = 0
+    tag   = "issue"
+    value = "letsencrypt.org"
+  }
+}
