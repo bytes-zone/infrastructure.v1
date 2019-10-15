@@ -47,6 +47,12 @@
     }];
   };
 
+  # Redis for session cache
+  services.redis = {
+    enable = true;
+    databases = 2;
+  };
+
   # Gitea
   services.gitea = {
     enable = true;
@@ -94,6 +100,14 @@
       [attachment]
       ENABLED = true
       PATH = /mnt/objects/gitea/attachments
+
+      [cache]
+      ADAPTER = redis
+      HOST = network:tcp,addr=:6379,db=0
+
+      [session]
+      PROVIDER = redis
+      PROVIDER_CONFIG = network=tcp,addr=:6379,db=1
 
       [other]
       SHOW_FOOTER_BRANDING = false
