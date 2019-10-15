@@ -101,7 +101,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    virtualHosts."167.99.156.113" = {
+    virtualHosts."git.bytes.zone" = {
       default = true;
       locations."/" = { proxyPass = "http://localhost:3000"; };
     };
