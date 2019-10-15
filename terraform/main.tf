@@ -117,11 +117,11 @@ resource "cloudflare_record" "git_bytes_zone" {
 
 # Mail
 
-resource "mailgun_domain" "git_byte_zone" {
+resource "mailgun_domain" "git_bytes_zone" {
   name = "${cloudflare_record.git_bytes_zone.hostname}"
 }
 
-resource "cloudflare_record" "git_byte_zone_spf" {
+resource "cloudflare_record" "git_bytes_zone_spf" {
   zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
   name    = "git"
   type    = "TXT"
@@ -129,7 +129,7 @@ resource "cloudflare_record" "git_byte_zone_spf" {
   ttl     = 1 # automatic
 }
 
-resource "cloudflare_record" "git_byte_zone_domainkey" {
+resource "cloudflare_record" "git_bytes_zone_domainkey" {
   zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
   name    = "krs._domainkey.git"
   type    = "TXT"
@@ -137,7 +137,7 @@ resource "cloudflare_record" "git_byte_zone_domainkey" {
   ttl     = 1 # automatic
 }
 
-resource "cloudflare_record" "git_byte_zone_mxa" {
+resource "cloudflare_record" "git_bytes_zone_mxa" {
   zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
   name    = "git"
   type    = "MX"
@@ -145,7 +145,7 @@ resource "cloudflare_record" "git_byte_zone_mxa" {
   ttl     = 1 # automatic
 }
 
-resource "cloudflare_record" "git_byte_zone_mxb" {
+resource "cloudflare_record" "git_bytes_zone_mxb" {
   zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
   name    = "git"
   type    = "MX"
@@ -153,7 +153,7 @@ resource "cloudflare_record" "git_byte_zone_mxb" {
   ttl     = 1 # automatic
 }
 
-resource "cloudflare_record" "git_byte_zone_return" {
+resource "cloudflare_record" "git_bytes_zone_return" {
   zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
   name    = "email.git"
   type    = "CNAME"
