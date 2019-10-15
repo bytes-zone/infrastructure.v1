@@ -89,3 +89,20 @@ resource "digitalocean_project" "git" {
     "${digitalocean_volume.gitea_backups.urn}",
   ]
 }
+
+# DNS
+
+data "cloudflare_zones" "bytes_zone" {
+  filter {
+    name = "bytes.zone"
+  }
+}
+
+resource "cloudflare_record" "git_bytes_zone" {
+  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  name    = "git"
+  type    = "A"
+  value   = "${digitalocean_droplet.gitea.ipv4_address}"
+  ttl     = 1 # automatic
+  proxied = true
+}
