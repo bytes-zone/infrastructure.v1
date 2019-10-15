@@ -79,6 +79,18 @@
       LFS_START_SERVER = true
       LFS_CONTENT_PATH = /mnt/objects/gitea/lfs
 
+      [service]
+      REGISTER_EMAIL_CONFIRM = true
+      ENABLE_NOTIFY_MAIL = true
+
+      [mailer]
+      ENABLED = true
+      HOST = smtp.mailgun.org:587
+      FROM = git.bytes.zone <noreply@git.bytes.zone>
+      USER = postmaster@git.bytes.zone
+      PASSWD = ${builtins.readFile ./smtp_password}
+      MAILER_TYPE = smtp
+
       [attachment]
       ENABLED = true
       PATH = /mnt/objects/gitea/attachments
@@ -86,8 +98,6 @@
       [other]
       SHOW_FOOTER_BRANDING = false
     '';
-
-    # TODO: mailer settings
   };
   systemd.services.gitea.serviceConfig = {
     AmbientCapabilities = "cap_net_bind_service";
