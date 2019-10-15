@@ -27,6 +27,14 @@ provider "cloudflare" {
   api_token = "${var.cloudflare_token}"
 }
 
+variable "mailgun_token" {}
+
+provider "mailgun" {
+  version = "~> 0.2"
+
+  api_key = "${var.mailgun_token}"
+}
+
 # INFRASTRUCTURE
 
 variable "region" { default = "nyc1" }
