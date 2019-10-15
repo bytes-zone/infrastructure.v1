@@ -17,6 +17,7 @@
   networking.firewall.allowedTCPPorts = [
     22 # gitea ssh
     80
+    443
     2200 # admin ssh
   ];
 
@@ -103,6 +104,10 @@
 
     virtualHosts."git.bytes.zone" = {
       default = true;
+
+      enableACME = true;
+      addSSL = true; # TODO: forceSSL once ACME works
+
       locations."/" = { proxyPass = "http://localhost:3000"; };
     };
   };
