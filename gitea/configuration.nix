@@ -58,6 +58,8 @@
       type = "postgres";
     };
 
+    appName = "Git in the Bytes Zone";
+
     # only for people I invite!
     disableRegistration = true;
 
