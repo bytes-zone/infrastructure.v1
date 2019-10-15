@@ -19,6 +19,14 @@ provider "digitalocean" {
   token = "${var.digitalocean_token}"
 }
 
+variable "cloudflare_token" {}
+
+provider "cloudflare" {
+  version = "~> 2.0"
+
+  api_token = "${var.cloudflare_token}"
+}
+
 # INFRASTRUCTURE
 
 variable "region" { default = "nyc1" }
