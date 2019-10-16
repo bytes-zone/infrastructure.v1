@@ -12,7 +12,10 @@
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCtdJAHUm6TlJnze9qBiGgGG/ZnZ4YizV+AkERuR5qXpQ5Ug4A9tre+al3T+uQgfoZyIUVNeRd0oSW9T2GSuBmRiWkUT0MOCOcHhXUueO7C6BRDONRb4KXvhJpZlAAYBolVeXyo5JtqDo58ODMpoh7owybFD9ZNjDF/P3ppaI6/zqbTIRyagAT/T7+eCO+IW+/74qgBh600OaVdqt8lueZ4A5R/I//b3CoWetCp/y94vYiNItzyWansd4V7swBZjh0fJ488TZ9Z/CkZjbfkYZj1kILqpYCsQN5NVfS4wfa1YX62MXkU45MOsGhpM22sqoPtDbftR9zJyoH/oB5lKKUIxKoroeC9Tw7NWGeGzDnn4H/2HAWbGQ366jLavzES7gRt4xZlJTKb1V1QVAW7kEJ1Yoo7BTCktBwSVmN/p1JYktn1ClwvahNvDxgPHdq+IMtMeNA3iWq1ibGL3o/xyBB5f84SFpD5o0jD20Ow8KDwmeIVfEzfg4REvHrV2tzHMKpfKDptDv1fDDmFGlo30Tq77d4kLSO/VSBfAXnXr3bTKdG0Rz8f5XdxUPk76NlKjttt5cCHU8SiyhMktSiAPPCzfD60TokPNSuUWbwjYsrXAUrF0eirAeGbcW+1dhTOlVEfLyIztea4+XGPt4EOK7keoPYG/dNAGxnOjjJaR3aMZQ== brianhicks@flame.local"
   ];
 
-  # Security Stuff
+  ## Security Stuff
+  # we move operational login to `:2200` and git login to `:22`. Honestly, this
+  # is *mostly* a quality-of-life improvement: I push with git way more than I
+  # ssh in for admin stuff.
   services.openssh.ports = [ 2200 ];
   networking.firewall.allowedTCPPorts = [
     22 # gitea ssh
@@ -21,23 +24,30 @@
     2200 # admin ssh
   ];
 
-  # PostgreSQL
+  ## PostgreSQL
+  # primary metadata storage for gitea (e.g. logins, permissions... but not
+  # repo data itself.)
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_11;
 
+    # it might not be the *best* to host this on an external volume but it
+    # works OK for now. If things prove to be painfully slow as the server
+    # grows, it may have to move.
     dataDir = "/mnt/db/data";
 
-    # security
+    # we don't allow network login, even over localhost. That means that all
+    # our logins are tied to system users.
+    enableTCPIP = false;
     identMap = ''
       nixos root     postgres
       nixos postgres postgres
       nixos gitea    gitea
     '';
     authentication = "local all all ident map=nixos";
-    enableTCPIP = false;
 
-    # initial setup
+    # I could have done all this by hand, but I didn't have to because Nixos is
+    # nice. ❤️
     ensureDatabases = [ "gitea" ];
     ensureUsers = [{
       name = "gitea";
@@ -45,13 +55,14 @@
     }];
   };
 
-  # Redis for session cache
+  ## Redis
+  # used for gitea sessions and cache. That's why there are only two databases!
   services.redis = {
     enable = true;
     databases = 2;
   };
 
-  # Gitea
+  ## Gitea
   services.gitea = {
     enable = true;
     package = pkgs.gitea;
@@ -111,12 +122,18 @@
       SHOW_FOOTER_BRANDING = false
     '';
   };
+  # by default, gitea can't bind to ports lower than 1024 since it runs at a
+  # user, but we want to bind to :22 for git-over-ssh. These stanzas let the
+  # systemd service do that.
   systemd.services.gitea.serviceConfig = {
     AmbientCapabilities = "cap_net_bind_service";
     CapabilityBoundingSet = "cap_net_bind_service";
   };
 
-  # Nginx reverse proxy
+  ## Nginx
+  # by reverse proxying, we get a lot more control over what gets bound where,
+  # SSL settings, compression, etc. It's also trivially easy to set up Let's
+  # Encrypt!
   services.nginx = {
     enable = true;
     package = pkgs.nginxMainline;
@@ -136,7 +153,9 @@
     };
   };
 
-  # backups
+  ## backups
+  # this is only local backups. I do remote backups by hand right now. I hope
+  # to automate it soon!
   services.duplicity = {
     enable = true;
     root = "/mnt/objects/gitea";
