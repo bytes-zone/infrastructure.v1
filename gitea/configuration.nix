@@ -156,14 +156,21 @@
   ## backups
   # this is only local backups. I do remote backups by hand right now. I hope
   # to automate it soon!
-  services.duplicity = {
-    enable = true;
-    root = "/mnt/objects/gitea";
-    targetUrl = "file:///mnt/backups/gitea";
-  };
   services.postgresqlBackup = {
     enable = true;
     backupAll = true;
     location = "/mnt/backups/postgresql";
+  };
+
+  systemd.services.rsync-gitea-objects = {
+    description = "rsync gitea objects to the backup location";
+    path = [ pkgs.rsync ];
+    script = "rsync --recursive /mnt/objects/gitea/ /mnt/backups/gitea/";
+  };
+  systemd.timers.rsync-gitea-objects = {
+    description = "update timer for rsync-gitea-objects";
+    partOf = [ "rsync-gitea-objects.service" ];
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnCalendar = "daily";
   };
 }
