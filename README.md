@@ -1,6 +1,6 @@
-# Infrastructure
+# Infrastructure in the Bytes Zone
 
-These are the configs and infra stuff for this site (name TBD)!
+These are the configs and infra stuff for git.bytes.zone!
 
 - `gitea`: system configuration for the gitea instance
 - `nix`: pinned nix stuff, both tools and upstreams for nixos
@@ -8,7 +8,7 @@ These are the configs and infra stuff for this site (name TBD)!
 
 ## Local Setup
 
-- `git clone` using the instructions on the unnamed site.
+- `git clone https://git.bytes.zone/bytes.zone/infrastructure`
 - `direnv allow` to get the versions of tools
 
 If you're working with Terraform stuff, `cd terraform && terraform init`.
