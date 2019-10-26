@@ -1,5 +1,4 @@
 /gitea/result
 /gitea/smtp_password
 /terraform/.terraform/
-/terraform/keys/gitea.id_rsa
 /terraform/terraform.tfvars
