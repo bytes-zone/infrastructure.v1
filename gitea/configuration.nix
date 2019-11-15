@@ -94,6 +94,10 @@
       LFS_START_SERVER = true
       LFS_CONTENT_PATH = /mnt/objects/gitea/lfs
 
+      ROOT_URL = https://git.bytes.zone/
+      SSH_DOMAIN = git.bytes.zone
+      BUILTIN_SSH_SERVER_USER = git
+
       [service]
       REGISTER_EMAIL_CONFIRM = true
       ENABLE_NOTIFY_MAIL = true
