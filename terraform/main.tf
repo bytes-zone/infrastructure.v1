@@ -118,7 +118,9 @@ resource "cloudflare_record" "git_bytes_zone" {
 # Mail
 
 resource "mailgun_domain" "git_bytes_zone" {
-  name = "${cloudflare_record.git_bytes_zone.hostname}"
+  name        = "${cloudflare_record.git_bytes_zone.hostname}"
+  region      = "us"
+  spam_action = "disabled"
 }
 
 resource "cloudflare_record" "git_bytes_zone_spf" {
@@ -131,9 +133,9 @@ resource "cloudflare_record" "git_bytes_zone_spf" {
 
 resource "cloudflare_record" "git_bytes_zone_domainkey" {
   zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
-  name    = "krs._domainkey.git"
+  name    = "k1._domainkey.git"
   type    = "TXT"
-  value   = "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpfR8oepBuDvnRoMBaMZBNHthNzTslWvBZK1zBq/R00xo4ecVMLhCRBa2qCKaw38GwDi8ixrRaABqdWZc1u+74T85Mt/fjzox9MepP6c0+nsMcCdZb4wt7qq/ma8ZeQ4YJuh+ne0UUg/osjgU1DDxNwdldIrCGmvGJRAQDcsTwFQIDAQAB"
+  value   = "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrpdr7dT7MIv5L/yCvX2et+EMuAZtOa+PcZGc7DEPKNHlHJnp11db+syhFxLG1NkGd1hFW/TPXWPpoHXmJa4PQx0S+4UnC0cHaYwbTE1xMJRijRps1XsfmA9a7p9bD60xOTGb5EoO3wMxUbhuvDZfBtVwEjCBdJ8ZqWvkOFfyBKQIDAQAB"
   ttl     = 1 # automatic
 }
 
