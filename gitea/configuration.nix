@@ -158,23 +158,29 @@
   };
 
   ## backups
-  # this is only local backups. I do remote backups by hand right now. I hope
-  # to automate it soon!
   services.postgresqlBackup = {
     enable = true;
     backupAll = true;
-    location = "/mnt/backups/postgresql";
+    location = "/mnt/db/backups";
+    startAt = "*-*-* 01:15:00";
   };
 
-  systemd.services.rsync-gitea-objects = {
-    description = "rsync gitea objects to the backup location";
-    path = [ pkgs.rsync ];
-    script = "rsync --recursive /mnt/objects/gitea/ /mnt/backups/gitea/";
-  };
-  systemd.timers.rsync-gitea-objects = {
-    description = "update timer for rsync-gitea-objects";
-    partOf = [ "rsync-gitea-objects.service" ];
-    wantedBy = [ "timers.target" ];
-    timerConfig.OnCalendar = "daily";
+  nixpkgs.config.allowUnfree = true;
+  services.tarsnap = {
+    enable = true;
+    archives = {
+      gitea = {
+        cachedir = "/var/cache/tarsnap/gitea";
+        directories = [ "/mnt/objects/gitea" ];
+        keyfile = "/root/backups-gitea.key";
+      };
+
+      postgres = {
+        cachedir = "/var/cache/tarsnap/postgres";
+        directories = [ "/mnt/db/backups" ];
+        keyfile = "/root/backups-postgres.key";
+        period = "02:15";
+      };
+    };
   };
 }

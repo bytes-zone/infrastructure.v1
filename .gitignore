@@ -1,3 +1,4 @@
+/gitea/backups-*.key
 /gitea/result
 /gitea/smtp_password
 /terraform/.terraform/
