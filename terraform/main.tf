@@ -16,7 +16,7 @@ variable "digitalocean_token" {}
 provider "digitalocean" {
   version = "~> 1.9"
 
-  token = "${var.digitalocean_token}"
+  token = var.digitalocean_token
 }
 
 variable "cloudflare_token" {}
@@ -24,7 +24,7 @@ variable "cloudflare_token" {}
 provider "cloudflare" {
   version = "~> 2.0"
 
-  api_token = "${var.cloudflare_token}"
+  api_token = var.cloudflare_token
 }
 
 variable "mailgun_token" {}
@@ -32,7 +32,7 @@ variable "mailgun_token" {}
 provider "mailgun" {
   version = "~> 0.2"
 
-  api_key = "${var.mailgun_token}"
+  api_key = var.mailgun_token
 }
 
 # INFRASTRUCTURE
@@ -50,7 +50,7 @@ resource "digitalocean_volume" "gitea_db" {
   description              = "postgres storage for gitea"
   initial_filesystem_type  = "ext4"
   initial_filesystem_label = "db"
-  region                   = "${var.region}"
+  region                   = var.region
 }
 
 resource "digitalocean_volume" "gitea_objects" {
@@ -59,7 +59,7 @@ resource "digitalocean_volume" "gitea_objects" {
   description              = "git+lfs object storage for gitea"
   initial_filesystem_type  = "ext4"
   initial_filesystem_label = "objects"
-  region                   = "${var.region}"
+  region                   = var.region
 }
 
 resource "digitalocean_volume" "gitea_backups" {
@@ -68,22 +68,22 @@ resource "digitalocean_volume" "gitea_backups" {
   description              = "backup staging area for gitea services"
   initial_filesystem_type  = "ext4"
   initial_filesystem_label = "backups"
-  region                   = "${var.region}"
+  region                   = var.region
 }
 
 resource "digitalocean_droplet" "gitea" {
   name      = "gitea"
-  region    = "${var.region}"
+  region    = var.region
   size      = "s-1vcpu-1gb"
   image     = "ubuntu-16-04-x64" # not worried that this is old; we'll soon infect it with NixOS
   backups   = true
   ipv6      = true
   user_data = "${file("${path.module}/nixos_infect.yaml")}"
-  ssh_keys  = ["${digitalocean_ssh_key.gitea.id}"]
+  ssh_keys  = [digitalocean_ssh_key.gitea.id]
   volume_ids = [
-    "${digitalocean_volume.gitea_db.id}",
-    "${digitalocean_volume.gitea_objects.id}",
-    "${digitalocean_volume.gitea_backups.id}",
+    digitalocean_volume.gitea_db.id,
+    digitalocean_volume.gitea_objects.id,
+    digitalocean_volume.gitea_backups.id,
   ]
 }
 
@@ -91,10 +91,10 @@ resource "digitalocean_project" "git" {
   name        = "git"
   environment = "production"
   resources = [
-    "${digitalocean_droplet.gitea.urn}",
-    "${digitalocean_volume.gitea_db.urn}",
-    "${digitalocean_volume.gitea_objects.urn}",
-    "${digitalocean_volume.gitea_backups.urn}",
+    digitalocean_droplet.gitea.urn,
+    digitalocean_volume.gitea_db.urn,
+    digitalocean_volume.gitea_objects.urn,
+    digitalocean_volume.gitea_backups.urn,
   ]
 }
 
@@ -107,10 +107,10 @@ data "cloudflare_zones" "bytes_zone" {
 }
 
 resource "cloudflare_record" "git_bytes_zone" {
-  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "git"
   type    = "A"
-  value   = "${digitalocean_droplet.gitea.ipv4_address}"
+  value   = digitalocean_droplet.gitea.ipv4_address
   ttl     = 1     # automatic
   proxied = false # git push over SSH doesn't work otherwise
 }
@@ -118,13 +118,13 @@ resource "cloudflare_record" "git_bytes_zone" {
 # Mail
 
 resource "mailgun_domain" "git_bytes_zone" {
-  name        = "${cloudflare_record.git_bytes_zone.hostname}"
+  name        = cloudflare_record.git_bytes_zone.hostname
   region      = "us"
   spam_action = "disabled"
 }
 
 resource "cloudflare_record" "git_bytes_zone_spf" {
-  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "git"
   type    = "TXT"
   value   = "v=spf1 include:mailgun.org ~all"
@@ -132,7 +132,7 @@ resource "cloudflare_record" "git_bytes_zone_spf" {
 }
 
 resource "cloudflare_record" "git_bytes_zone_domainkey" {
-  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "k1._domainkey.git"
   type    = "TXT"
   value   = "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrpdr7dT7MIv5L/yCvX2et+EMuAZtOa+PcZGc7DEPKNHlHJnp11db+syhFxLG1NkGd1hFW/TPXWPpoHXmJa4PQx0S+4UnC0cHaYwbTE1xMJRijRps1XsfmA9a7p9bD60xOTGb5EoO3wMxUbhuvDZfBtVwEjCBdJ8ZqWvkOFfyBKQIDAQAB"
@@ -140,7 +140,7 @@ resource "cloudflare_record" "git_bytes_zone_domainkey" {
 }
 
 resource "cloudflare_record" "git_bytes_zone_mxa" {
-  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "git"
   type    = "MX"
   value   = "mxa.mailgun.org"
@@ -148,7 +148,7 @@ resource "cloudflare_record" "git_bytes_zone_mxa" {
 }
 
 resource "cloudflare_record" "git_bytes_zone_mxb" {
-  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "git"
   type    = "MX"
   value   = "mxb.mailgun.org"
@@ -156,7 +156,7 @@ resource "cloudflare_record" "git_bytes_zone_mxb" {
 }
 
 resource "cloudflare_record" "git_bytes_zone_return" {
-  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "email.git"
   type    = "CNAME"
   value   = "mailgun.org"
@@ -166,7 +166,7 @@ resource "cloudflare_record" "git_bytes_zone_return" {
 # Netlify Blog
 
 resource "cloudflare_record" "bytes_zone_cname" {
-  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "@"
   type    = "CNAME"
   value   = "bytes-zone.netlify.com"
@@ -175,7 +175,7 @@ resource "cloudflare_record" "bytes_zone_cname" {
 }
 
 resource "cloudflare_record" "www_bytes_zone_cname" {
-  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "www"
   type    = "CNAME"
   value   = "bytes-zone.netlify.com"
@@ -186,7 +186,7 @@ resource "cloudflare_record" "www_bytes_zone_cname" {
 # SSL
 
 resource "cloudflare_record" "git_bytes_zone_caa" {
-  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "git"
   type    = "CAA"
   ttl     = 1 # automatic
