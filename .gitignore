@@ -1,5 +1,6 @@
 /gitea/backups-*.key
 /gitea/result
 /gitea/smtp_password
+/rpg/backups-*.key
 /terraform/.terraform/
 /terraform/terraform.tfvars
