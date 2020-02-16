@@ -163,6 +163,26 @@ resource "cloudflare_record" "git_bytes_zone_return" {
   ttl     = 1 # automatic
 }
 
+# Netlify Blog
+
+resource "cloudflare_record" "bytes_zone_cname" {
+  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  name    = "@"
+  type    = "CNAME"
+  value   = "bytes-zone.netlify.com"
+  ttl     = 1     # automatic
+  proxied = false # Netlify does their own SSL so we don't need CloudFlare's
+}
+
+resource "cloudflare_record" "www_bytes_zone_cname" {
+  zone_id = "${data.cloudflare_zones.bytes_zone.zones[0].id}"
+  name    = "www"
+  type    = "CNAME"
+  value   = "bytes-zone.netlify.com"
+  ttl     = 1     # automatic
+  proxied = false # Netlify does their own SSL so we don't need CloudFlare's
+}
+
 # SSL
 
 resource "cloudflare_record" "git_bytes_zone_caa" {
