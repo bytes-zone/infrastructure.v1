@@ -41,7 +41,7 @@ variable "region" { default = "nyc1" }
 
 resource "digitalocean_ssh_key" "gitea" {
   name       = "gitea root"
-  public_key = "${file("${path.module}/keys/gitea.id_rsa.pub")}"
+  public_key = file("${path.module}/keys/gitea.id_rsa.pub")
 }
 
 resource "digitalocean_volume" "gitea_db" {
@@ -78,7 +78,7 @@ resource "digitalocean_droplet" "gitea" {
   image     = "ubuntu-16-04-x64" # not worried that this is old; we'll soon infect it with NixOS
   backups   = true
   ipv6      = true
-  user_data = "${file("${path.module}/nixos_infect.yaml")}"
+  user_data = file("${path.module}/nixos_infect.yaml")
   ssh_keys  = [digitalocean_ssh_key.gitea.id]
   volume_ids = [
     digitalocean_volume.gitea_db.id,
