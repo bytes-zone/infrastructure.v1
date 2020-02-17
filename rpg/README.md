@@ -11,9 +11,9 @@ Things done:
 - [x] Invite DM
 - [ ] [Post-Install Maintenance](https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md#post-install-maintenance)
   - [x] Set up backups (tarsnap, probably) ([discourse side](https://meta.discourse.org/t/configure-automatic-backups-for-discourse/14855))
+  - [x] add [Mutant Standard](https://mutant.tech) emoji.
   - [ ] set up [reply via email support](https://meta.discourse.org/t/set-up-reply-via-email-support/14003)
   - [ ] look at [plugins](https://meta.discourse.org/t/install-plugins-in-discourse/19157)
-  - [ ] add [Mutant Standard](https://mutant.tech) emoji.
 - [ ] Invite initial users
 
 I'm following [Discourse's install directions](https://github.com/discourse/discourse/blob/master/docs/INSTALL-cloud.md) after the initial cloud setup.
@@ -81,3 +81,14 @@ Persistent=true
 ```
 
 Will check tomorrow morning to see if everything ran on time.
+
+## Adding Mutant Standard
+
+Downloaded the latest archive from [mutant.tech](https://mutant.tech)
+
+I uploaded a bunch without any discretion as to what they were, and it seems to have broken image upload on the server.
+Boo!
+
+I was able to get the ones I wanted uploaded eventually by rebuilding the server every time I had an issue.
+This feels like a rate-limiting thing to me.
+I've got an [open ticket on meta.discourse.org](https://meta.discourse.org/t/cant-upload-new-images-or-emoji/141785/2) about it.
