@@ -4,6 +4,36 @@ This one is more manual than I'd like, since Discourse has really strong opinion
 So this server is going to be more decision-log-based than configuration-based.
 Oh well.
 
+## 2020-02-20: Plugins
+
+I added a new plugin to `/var/discourse/containers/app.yaml` and ran `/var/discourse/launcher rebuild app` to install it.
+
+I'm also configuring ufw today.
+Should only need 22, 80, and 443.
+
+```
+ufw default deny incoming
+ufw allow 22/tcp
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw enable
+```
+
+output of `ufw status`:
+
+```
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW       Anywhere
+80/tcp                     ALLOW       Anywhere
+443/tcp                    ALLOW       Anywhere
+22/tcp (v6)                ALLOW       Anywhere (v6)
+80/tcp (v6)                ALLOW       Anywhere (v6)
+443/tcp (v6)               ALLOW       Anywhere (v6)
+```
+
 ## 2020-02-16: Initial Setup
 
 Things done:
