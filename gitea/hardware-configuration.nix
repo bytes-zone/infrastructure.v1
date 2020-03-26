@@ -16,10 +16,5 @@
       fsType = "ext4";
       options = [ "discard" "defaults" "noatime" ];
     };
-    "/mnt/backups" = {
-      device = "/dev/disk/by-label/backups";
-      fsType = "ext4";
-      options = [ "discard" "defaults" "noatime" ];
-    };
   };
 }
