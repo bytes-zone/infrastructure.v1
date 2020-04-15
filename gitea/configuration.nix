@@ -158,6 +158,18 @@
 
       locations."/" = { proxyPass = "http://localhost:3000"; };
     };
+
+    virtualHosts."elm-conf.com" = {
+      enableACME = false;
+      forceSSL = false;
+      extraConfig = "return 307 $scheme://2019.elm-conf.com$request_uri";
+    };
+
+    virtualHosts."www.elm-conf.com" = {
+      enableACME = false;
+      forceSSL = false;
+      extraConfig = "return 307 $scheme://2019.elm-conf.com$request_uri";
+    };
   };
 
   ## backups
