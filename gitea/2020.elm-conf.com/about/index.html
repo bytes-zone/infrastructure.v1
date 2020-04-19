@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="en"><head><link rel="preload" href="./content.json" as="fetch" crossorigin=""><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      } else {
+        console.log("No service worker registered.");
+      }</script><link rel="shortcut icon" href="/assets/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png"><link rel="manifest" href="/assets/manifest.json"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#fff"><meta name="application-name" content="elm-conf"><link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="167x167" href="/assets/apple-touch-icon-167x167.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-180x180.png"><link rel="apple-touch-icon" sizes="1024x1024" href="/assets/apple-touch-icon-1024x1024.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="elm-conf"><script defer="defer" src="/main.js"></script><link rel="preload" href="/main.js" as="script"><style>/*
+
+__/\\\\\\\\\\\\\\\__/\\\\\\\\\\\__/\\\\\\\\\\\\\\\_______/\\\\\___________________/\\\\\\\\\_____/\\\\\\\\\\\_______/\\\\\\\\\\\___        
+ _\///////\\\/////__\/////\\\///__\///////\\\/////______/\\\///\\\______________/\\\////////____/\\\/////////\\\___/\\\/////////\\\_       
+  _______\/\\\___________\/\\\___________\/\\\_________/\\\/__\///\\\__________/\\\/____________\//\\\______\///___\//\\\______\///__      
+   _______\/\\\___________\/\\\___________\/\\\________/\\\______\//\\\________/\\\_______________\////\\\___________\////\\\_________     
+    _______\/\\\___________\/\\\___________\/\\\_______\/\\\_______\/\\\_______\/\\\__________________\////\\\___________\////\\\______    
+     _______\/\\\___________\/\\\___________\/\\\_______\//\\\______/\\\________\//\\\____________________\////\\\___________\////\\\___   
+      _______\/\\\___________\/\\\___________\/\\\________\///\\\__/\\\___________\///\\\___________/\\\______\//\\\___/\\\______\//\\\__  
+       _______\/\\\________/\\\\\\\\\\\_______\/\\\__________\///\\\\\/______/\\\____\////\\\\\\\\\_\///\\\\\\\\\\\/___\///\\\\\\\\\\\/___ 
+        _______\///________\///////////________\///_____________\/////_______\///________\/////////____\///////////_______\///////////_____
+
+
+Basic styles for the Tito widget: use and abuse.
+
+Version: 1.1
+
+Docs are here: http://ti.to/docs/widget
+
+Ping us at support@tito.io if you need any help.
+
+Have fun.
+
+*/
+*{box-sizing:border-box}.tito-wrapper{border:1px solid #ccc;background:rgba(0,0,0,0.02);font-family:sans-serif;color:#333;margin:20px auto;max-width:900px;padding:10px 0 0 0;width:100%}.tito-ticket-list{display:block;list-style-type:none;margin:0;padding:0;width:100%}#tito-previous-releases,.tito-ticket-list.tito-ticket-waitlist{margin:0}.tito-ticket.row{display:block !important;border-bottom:1px solid #ccc !important;margin:0 15px !important;min-height:54px !important;padding:10px 0 !important}.tito-ticket:after{content:'';display:table;clear:both}.tito-ticket-name-wrapper,.tito-ticket-price-quantity-wrapper{border:none;display:block;float:left;vertical-align:middle;width:100%}@media screen and (min-width: 520px){.tito-ticket-name-wrapper,.tito-ticket-price-quantity-wrapper{width:50%}}.tito-ticket-name{display:block;font-size:16px;font-weight:normal;line-height:1.2;margin:8px 0 5px}.tito-ticket-name .label.label-default{border:1px solid #333 !important;border-radius:2px !important;color:#333 !important;font-size:10px !important;font-weight:bold !important;margin-left:5px !important;padding:2px 5px !important;position:relative !important;top:-1px !important;text-transform:uppercase !important}.tito-ticket-name-wrapper .tito-tickets-remaining{background:#ddd;border:1px solid rgba(51,51,51,0.2);color:#333;font-size:10px;padding:2px 5px;position:relative;top:-3px;margin-left:10px;white-space:nowrap}.tito-ticket-description{color:#adadad;font-size:12px}.tito-degressive-price-desc+.tito-ticket-description{margin-top:.5rem}.tito-ticket-price-quantity{text-align:right;width:auto}@media screen and (min-width: 520px){.tito-ticket-price-quantity{float:right}}.tito-ticket-price{float:left;text-align:left;width:50%}@media screen and (min-width: 520px){.tito-ticket-price{text-align:right;width:auto}}.tito-ticket-quantity{float:right;min-width:70px}.tito-ticket-quantity span{margin:0 10px}input[type=text].tito-ticket-quantity-field,input[type=text].tito-ticket-donation-field{background-color:#fff !important;border:1px solid #ccc !important;border-radius:4px !important;box-shadow:inset 0 1px 1px rgba(0,0,0,0.075) !important;color:#333 !important;display:inline-block !important;font-size:14px !important;height:34px !important;line-height:1.42857143 !important;margin:0 !important;padding:6px 12px !important;text-align:center !important}input[type=text].tito-ticket-quantity-field{width:45px !important}input[type=text].tito-ticket-donation-field{width:85px !important;margin-left:6px !important}.tito-ticket-price span{display:block;font-size:16px;line-height:34px}.tito-ticket-vat{color:#adadad;font-size:10px;padding-bottom:5px}.tito-ticket-status span{background:#efefef;border-radius:4px;color:#adadad;display:inline-block;font-size:14px;height:34px;line-height:34px;min-width:90px;padding:0 10px;text-align:center;text-decoration:none;width:100%}.btn.btn-default.btn-waitlist{background:#fff;border:1px solid #ccc;border-radius:4px !important;color:#333;font-size:14px !important;height:34px !important;line-height:1.42857143 !important;padding:6px 12px !important;white-space:nowrap !important;width:200px}.btn.btn-default.btn-waitlist:hover{border:1px solid #333}.tito-discount-code{display:block;margin:0 30px;padding:5px 0}@media screen and (min-width: 520px){.tito-discount-code{float:left}}.tito-discount-code-label{display:none}.btn.btn-default.tito-discount-apply-button{display:none !important}.tito-discount-code .tab-pane.tito-discount-code-show.active{display:none !important}.tito-discount-code .tab-pane.tito-discount-code-edit{display:block !important;visibility:visible !important}input.form-control.tito-discount-code-field.discount-code-field{background:#fff !important;border:1px solid #ccc !important;border-radius:4px !important;box-shadow:inset 0 1px 1px rgba(0,0,0,0.075) !important;display:inline-block !important;font-size:14px !important;height:34px !important;line-height:1.42857143 !important;margin:5px 0 !important;padding:6px 12px !important;width:100% !important}@media screen and (min-width: 520px){input.form-control.tito-discount-code-field.discount-code-field{width:200px !important}}.tito-discount-code-show{padding-top:15px}.tito-discount-code-edit,.tito-discount-code-show{display:none}.tito-discount-code-edit.active,.tito-discount-code-show.active{display:inline-block}.tito-submit-wrapper{margin:0 15px;padding:10px 0;text-align:right}.tito-submit{background:#428bca !important;border:1px solid #357ebd !important;border-radius:4px !important;color:#fff !important;cursor:pointer !important;font-size:14px !important;height:34px !important;line-height:1.42857143 !important;margin:0 !important;padding:6px 12px !important;text-align:center !important;width:100% !important}@media screen and (min-width: 520px){.tito-submit{width:100px !important}}.tito-submit:hover{border-color:#285e8e !important;background:#3276b1 !important}.tito-ticket.tito-locked-ticket>div{padding:10px 0 !important}.tito-ticket.tito-locked-ticket label,.tito-ticket.tito-locked-ticket span{opacity:.5 !important}.tito-locked-tickets-message p{font-size:14px !important;line-height:1.3 !important;opacity:.5 !important}.tito-badge-link{font-size:12px;display:inline-block;margin:15px 0 5px;text-align:center;width:100%}
+</style><title>About elm-conf</title><meta name="generator" content="elm-pages v1.2.11"><link rel="canonical" href="https://2020.elm-conf.com/about"><meta name="description" content="TODO"><meta property="og:image" content="https://2020.elm-conf.com/images/icon.png"><meta property="og:image:secure_url" content="https://2020.elm-conf.com/images/icon.png"><meta property="og:image:alt" content="elm-conf logo"><meta property="og:title" content="About elm-conf"><meta property="og:url" content="https://2020.elm-conf.com/about"><meta property="og:description" content="TODO"><meta property="og:site_name" content="bytes.zone"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:title" content="About elm-conf"><meta property="twitter:description" content="TODO"><meta property="twitter:image" content="https://2020.elm-conf.com/images/icon.png"><meta property="twitter:image:alt" content="elm-conf logo"><meta property="og:type" content="website"></head><body><div data-url="http://localhost:8000/about" display="none"></div><div class="_7dce1f67"><style>._14f64b44 {
+    display:flex;
+    justify-content:space-between;
+    align-items:top;
+    width:1024px;
+    margin-bottom:25px;
+}
+
+@media only screen and (max-width: 1024px) {
+    ._14f64b44 {
+        flex-direction:column;
+    align-items:center;
+    padding-top:23px;
+    }
+}
+
+._157eebc0 {
+    display:flex;
+    justify-content:center;
+}
+
+._1c1ae14a {
+    padding:17px 5px 0px 10px;
+    display:inline-block;
+    font-size:23px;
+    text-decoration:none;
+    color:#295972;
+}
+
+._21bf80c8 {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    font-family:"Open Sans", sans-serif;
+    color:#295972;
+    font-size:18px;
+}
+
+._293dbf56 {
+    width:1024px;
+}
+
+._2d397876 {
+    padding-top:14px;
+}
+
+@media only screen and (max-width: 350px) {
+    ._2d397876 {
+        display:none;
+    }
+}
+
+._3703ac63 {
+    font-size:18px;
+    padding:29px 14.5px;
+    display:block;
+    text-decoration:none;
+    font-family:"Open Sans", sans-serif;
+    color:#295972;
+    font-weight:bold;
+}
+
+._3ae10007 {
+    flex-basis:30%;
+}
+
+._3c7e1397 {
+    margin-left:15px;
+}
+
+@media only screen and (max-width: 500px) {
+    ._3c7e1397 {
+        margin-left:0;
+    }
+}
+
+._5e5644a2 {
+    list-style-type:decimal;
+    max-width:700px;
+    padding-left:37px;
+    font-family:"Open Sans", sans-serif;
+    font-size:18px;
+    line-height:37px;
+    margin:0 auto 23px auto;
+    color:#295972;
+}
+
+@media only screen and (max-width: 702px) {
+    ._5e5644a2 {
+        padding-left:46px;
+    padding-right:23px;
+    }
+}
+
+._644dd8c0 {
+    font-size:18px;
+    padding:29px 14.5px;
+    display:block;
+    text-decoration:none;
+    font-family:"Open Sans", sans-serif;
+    color:#295972;
+    font-weight:normal;
+}
+
+._71ee7f5f {
+    font-weight:700;
+}
+
+._7dce1f67 {
+    background-image:url(/images/light/background.svg);
+    background-position:50% 0;
+    background-repeat:no-repeat;
+    background-color:#F4F6F7;
+    min-height:100vh;
+}
+
+._8789b4b8 {
+    display:block;
+    padding:18px 29px;
+    background-color:#397A9D;
+    border-radius:5px;
+    box-shadow:0 2px 4px 1px rgba(0, 0, 0, 0.25);
+    color:#F4F6F7;
+    text-decoration:none;
+    font-weight:700;
+    font-family:"Open Sans", sans-serif;
+    text-align:center;
+}
+
+._9cfa7724 {
+    display:flex;
+    width:100%;
+    justify-content:center;
+}
+
+._a004e926 {
+    font-family:"Open Sans", sans-serif;
+    font-size:18px;
+    line-height:37px;
+    max-width:700px;
+    margin:0 auto 23px auto;
+    color:#295972;
+}
+
+@media only screen and (max-width: 702px) {
+    ._a004e926 {
+        padding-left:23px;
+    padding-right:23px;
+    }
+}
+
+._ad907744 {
+    font-family:"Open Sans", sans-serif;
+    font-size:18px;
+    color:#295972;
+    text-decoration:none;
+    border-bottom:1px solid #295972;
+}
+
+._ad907744:hover {
+    color:#397A9D;
+    border-color:#397A9D;
+}
+
+._c672f0bb {
+    display:flex;
+    justify-content:space-between;
+}
+
+@media only screen and (max-width: 1024px) {
+    ._c672f0bb {
+        flex-direction:column;
+    }
+}
+
+._d00577f8 {
+    display:flex;
+    align-items:baseline;
+    padding-right:-14.5px;
+    margin-top:13px;
+    flex-wrap:wrap;
+}
+
+@media only screen and (max-width: 500px) {
+    ._d00577f8 {
+        justify-content:center;
+    }
+}
+
+._e4eaa0e5 {
+    display:flex;
+    width:100%;
+    justify-content:center;
+    background-color:#EAEEF0;
+    margin-top:58px;
+}
+
+._e70f52a5 {
+    text-align:center;
+    font-family:Oswald, sans-serif;
+    color:#295972;
+    font-size:58px;
+    margin-bottom:73px;
+}
+
+@media only screen and (max-width: 500px) {
+    ._e70f52a5 {
+        padding-left:23px;
+    padding-right:23px;
+    }
+}
+
+._eb54e6a3 {
+    text-align:center;
+    padding:58px 0;
+    font-family:"Open Sans", sans-serif;
+    font-size:18px;
+    line-height:37px;
+    max-width:700px;
+    margin:0 auto 23px auto;
+    color:#295972;
+}
+
+@media only screen and (max-width: 702px) {
+    ._eb54e6a3 {
+        padding-left:23px;
+    padding-right:23px;
+    }
+}
+
+._f6dbc741 {
+    list-style-type:disc;
+    max-width:700px;
+    padding-left:37px;
+    font-family:"Open Sans", sans-serif;
+    font-size:18px;
+    line-height:37px;
+    margin:0 auto 23px auto;
+    color:#295972;
+}
+
+@media only screen and (max-width: 702px) {
+    ._f6dbc741 {
+        padding-left:46px;
+    padding-right:23px;
+    }
+}
+
+._ff192c14 {
+    text-align:center;
+    padding:0 10%;
+    font-family:Oswald, sans-serif;
+    font-weight:300;
+    color:#397A9D;
+    font-size:37px;
+    line-height:46px;
+    margin-top:73px;
+    margin-bottom:29px;
+}
+
+@media only screen and (max-width: 500px) {
+    ._ff192c14 {
+        padding-left:23px;
+    padding-right:23px;
+    }
+}</style><style>html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    font:inherit;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display:block;
+}
+
+body {
+    line-height:1;
+}
+
+ol, ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote::before, q::before {
+    content:'';
+    content:none;
+}
+
+blockquote::after, q::after {
+    content:'';
+    content:none;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}</style><style>html {
+    box-sizing:border-box;
+}
+
+* {
+    box-sizing:inherit;
+}
+
+*::before {
+    box-sizing:inherit;
+}
+
+*::after {
+    box-sizing:inherit;
+}</style><style>html {
+    font-size:18px;
+}</style><style>@font-face {font-family:'Open Sans';font-style:normal;font-weight:700;font-display:block;src:local('Open Sans'),url(/fonts/OpenSans-Bold.woff2) format('woff2');}@font-face {font-family:'Open Sans';font-style:italic;font-weight:700;font-display:block;src:local('Open Sans'),url(/fonts/OpenSans-BoldItalic.woff2) format('woff2');}@font-face {font-family:'Open Sans';font-style:italic;font-weight:400;font-display:block;src:local('Open Sans'),url(/fonts/OpenSans-Italic.woff2) format('woff2');}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;font-display:block;src:local('Open Sans'),url(/fonts/OpenSans.woff2) format('woff2');}@font-face {font-family:'Oswald';font-style:normal;font-weight:300;font-display:block;src:local('Oswald'),url(/fonts/Oswald-Light.woff2) format('woff2');}@font-face {font-family:'Oswald';font-style:normal;font-weight:400;font-display:block;src:local('Oswald'),url(/fonts/Oswald-Regular.woff2) format('woff2');}</style><div class="_9cfa7724"><header class="_14f64b44"><div class="_21bf80c8"><a href="/"><img src="/images/light/logo.svg" alt="" height="58"></a><a class="_1c1ae14a" href="/">elm-conf</a><div class="_2d397876">| July 15–17, 2020</div></div><nav class="_d00577f8"><a href="/" class="_644dd8c0">Home</a><a href="/about" class="_3703ac63">About</a><a href="/submit/talk" class="_644dd8c0">Submit a Talk</a><div class="_3c7e1397"><a class="_8789b4b8" href="/register">Buy Tickets</a></div></nav></header></div><div class="_157eebc0"><main class="_293dbf56"><div><h1 class="_e70f52a5">About elm-conf</h1><p class="_a004e926">elm-conf is a three-day, single-track conference for the Elm programming language community, now in its fifth year.
+Thank you to everyone who helps make elm-conf a reality: speakers, attendees, the talk selection team, and our sponsors.</p><p class="_a004e926">Special thanks to <a class="_ad907744" href="https://www.thestrangeloop.com">Strange Loop</a>, who gave us space and time to put on the conference for our first four years.
+It wouldn't have been possible without them, and we encourage everyone to attend their conference as well.
+If you like elm-conf, you'll probably like Strange Loop!</p><h2 class="_ff192c14">General Organizing Principles</h2><ol start="1" class="_5e5644a2"><li><strong class="_71ee7f5f">A thriving community is built on diversity.</strong> We encourage people from all backgrounds and walks of life to attend and speak. To ensure that everyone is included, we follow and enforce a <a class="_ad907744" href="/code-of-conduct">code of conduct</a>.</li></ol><ol start="2" class="_5e5644a2"><li><strong class="_71ee7f5f">We assume you're already interested in Elm.</strong> "Here's why you should care about Elm" is a great topic, but is more appropriate for a general-interest conference.</li></ol><ol start="3" class="_5e5644a2"><li><strong class="_71ee7f5f">We cannot have a good conference without good speakers.</strong> We will take care of our speakers leading up to and during the conference and will make sure they have what they need to deliver their best talk. Speakers have the final say on their representation in published materials, on the website, and in their published talks.</li></ol><ol start="4" class="_5e5644a2"><li><strong class="_71ee7f5f">elm-conf is for the community.</strong> A conference can't exist without a healthy community. We will do our part by choosing our words carefully and kindly, and communicating early and often about difficulties.</li></ol><h2 class="_ff192c14">Organizers</h2><p class="_a004e926">elm-conf is organized by:</p><ul class="_f6dbc741"><li>Brian Hicks</li><li>Emma Cunningham</li><li>Grace Callahan</li></ul><p class="_a004e926">Contact the organizers by emailing <a class="_ad907744" href="mailto:hey@elm-conf.com">hey@elm-conf.com</a></p></div></main></div><div class="_e4eaa0e5"><footer class="_293dbf56"><div class="_c672f0bb"><section class="_3ae10007"><h2 class="_ff192c14">Code of Conduct</h2><p class="_a004e926">Participation in elm-conf is governed by our <a class="_ad907744" href="/code-of-conduct">code of conduct</a>.</p></section><section class="_3ae10007"><h2 class="_ff192c14">Sponsorships</h2><p class="_a004e926">elm-conf sponsorships are available at a variety of levels. See the <a class="_ad907744" href="/sponsors/prospectus">sponsorship prospectus</a> or email <a class="_ad907744" href="mailto:sponsorships@elm-conf.com">sponsorships@elm-conf.com</a> for details.</p></section><section class="_3ae10007"><h2 class="_ff192c14">Contact</h2><p class="_a004e926">You can contact us at <a class="_ad907744" href="mailto:hey@elm-conf.com">hey@elm-conf.com</a>, or on Twitter at <a class="_ad907744" href="https://twitter.com/elmconf">@elmconf</a>.</p><p class="_a004e926">Previous years: <a class="_ad907744" href="https://2016.elm-conf.us">2016</a>, <a class="_ad907744" href="https://2017.elm-conf.us">2017</a>, <a class="_ad907744" href="https://2018.elm-conf.us">2018</a>, <a class="_ad907744" href="https://2019.elm-conf.com">2019</a>.</p></section></div><p class="_eb54e6a3">Copyright 2020, elm-conf, LLC. Built with 💙 in St. Louis.</p></footer></div></div></body></html>
