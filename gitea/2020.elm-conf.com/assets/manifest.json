@@ -1,15 +1,15 @@
 {
   "name": "elm-conf",
   "short_name": "elm-conf",
-  "description": "TODO",
+  "description": "elm-conf 2020",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
-  "background_color": "#fff",
-  "theme_color": "#fff",
+  "background_color": "#f4f6f7",
+  "theme_color": "#eaeef0",
   "icons": [
     {
       "src": "/assets/android-chrome-36x36.png",
