@@ -163,6 +163,11 @@
       serverAliases = [ "www.elm-conf.com" ];
       extraConfig = "return 307 $scheme://2019.elm-conf.com$request_uri;";
     };
+
+    virtualHosts."2020.elm-conf.com" = {
+      forceSSL = false;
+      root = ./2020.elm-conf.com;
+    };
   };
 
   ## backups
