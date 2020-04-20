@@ -165,7 +165,9 @@
     };
 
     virtualHosts."2020.elm-conf.com" = {
-      forceSSL = false;
+      forceSSL = true;
+      enableACME = true;
+
       root = ./2020.elm-conf.com;
     };
   };
