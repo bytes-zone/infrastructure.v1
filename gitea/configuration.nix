@@ -129,6 +129,7 @@
       SHOW_FOOTER_BRANDING = false
     '';
   };
+
   # by default, gitea can't bind to ports lower than 1024 since it runs at a
   # user, but we want to bind to :22 for git-over-ssh. These stanzas let the
   # systemd service do that.
