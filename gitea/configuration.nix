@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
@@ -21,10 +21,10 @@
   # ssh in for admin stuff.
   services.openssh.ports = [ 2200 ];
   networking.firewall.allowedTCPPorts = [
-    22 # gitea ssh
     80
     443
     2200 # admin ssh
+    2222 # gitea ssh
   ];
 
   ## PostgreSQL
@@ -90,7 +90,7 @@
 
       [server]
       START_SSH_SERVER = true
-      SSH_PORT = 22
+      SSH_PORT = 2222
 
       LANDING_PAGE = explore
 
@@ -127,15 +127,12 @@
 
       [other]
       SHOW_FOOTER_BRANDING = false
-    '';
-  };
 
-  # by default, gitea can't bind to ports lower than 1024 since it runs at a
-  # user, but we want to bind to :22 for git-over-ssh. These stanzas let the
-  # systemd service do that.
-  systemd.services.gitea.serviceConfig = {
-    AmbientCapabilities = "cap_net_bind_service";
-    CapabilityBoundingSet = "cap_net_bind_service";
+      [log]
+      LEVEL = Warning
+      ENABLE_XORM_LOG = false
+      ENABLE_ACCESS_LOG = false
+    '';
   };
 
   ## Nginx
@@ -171,6 +168,11 @@
 
       root = ./2020.elm-conf.com;
     };
+  };
+
+  security.acme = {
+    email = "brian@brianthicks.com";
+    acceptTerms = true;
   };
 
   ## backups
