@@ -161,7 +161,10 @@
       enableACME = true;
       forceSSL = true;
 
-      root = import (./notes) { };
+      locations."/" = {
+        root = import (./notes) { };
+        tryFiles = "$uri $uri/ /index.html";
+      };
     };
 
     virtualHosts."elm-conf.com" = {
