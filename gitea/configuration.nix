@@ -157,6 +157,17 @@
       locations."/" = { proxyPass = "http://localhost:3000"; };
     };
 
+    virtualHosts."notes.bytes.zone" = {
+      # enableACME = true;
+      # forceSSL = true;
+
+      root = import (pkgs.fetchgit {
+        url = "https://git.bytes.zone/brian/notes";
+        rev = "48f4f4bd10da4646aea19db3cc22bbd97cb47e32";
+        sha256 = "00c0hydrdl3fbvs5nlhx44ja0bcccqcfpc3kpr1faxc4im416zbw";
+      }) { };
+    };
+
     virtualHosts."elm-conf.com" = {
       serverAliases = [ "www.elm-conf.com" ];
       extraConfig = "return 307 $scheme://2020.elm-conf.com$request_uri;";
