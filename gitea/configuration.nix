@@ -158,8 +158,8 @@
     };
 
     virtualHosts."notes.bytes.zone" = {
-      # enableACME = true;
-      # forceSSL = true;
+      enableACME = true;
+      forceSSL = true;
 
       root = import (./notes) { };
     };
