@@ -161,11 +161,7 @@
       # enableACME = true;
       # forceSSL = true;
 
-      root = import (pkgs.fetchgit {
-        url = "https://git.bytes.zone/brian/notes";
-        rev = "48f4f4bd10da4646aea19db3cc22bbd97cb47e32";
-        sha256 = "00c0hydrdl3fbvs5nlhx44ja0bcccqcfpc3kpr1faxc4im416zbw";
-      }) { };
+      root = import (./notes) { };
     };
 
     virtualHosts."elm-conf.com" = {

@@ -1,0 +1,3 @@
+[submodule "gitea/notes"]
+	path = gitea/notes
+	url = ssh://git@git.bytes.zone:2222/brian/notes
