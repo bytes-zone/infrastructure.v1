@@ -167,6 +167,19 @@
       };
     };
 
+    virtualHosts."couch.bytes.zone" = {
+      enableACME = true;
+      forceSSL = true;
+
+      locations."/" = {
+        proxyPass = "http://localhost:5984";
+        extraConfig = ''
+          proxy_redirect off;
+          proxy_buffering off;
+        '';
+      };
+    };
+
     virtualHosts."elm-conf.com" = {
       serverAliases = [ "www.elm-conf.com" ];
       extraConfig = "return 307 $scheme://2020.elm-conf.com$request_uri;";
@@ -183,6 +196,14 @@
   security.acme = {
     email = "brian@brianthicks.com";
     acceptTerms = true;
+  };
+
+  ## Couchdb
+  # note to self: if/when reprovisioning this, remember to create an admin
+  # user right away using fauxton.
+  services.couchdb = {
+    enable = true;
+    package = pkgs.couchdb2;
   };
 
   ## backups
