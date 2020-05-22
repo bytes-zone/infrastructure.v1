@@ -16,9 +16,6 @@
   environment.systemPackages = [ pkgs.kakoune-unwrapped ];
 
   ## Security Stuff
-  # we move operational login to `:2200` and git login to `:22`. Honestly, this
-  # is *mostly* a quality-of-life improvement: I push with git way more than I
-  # ssh in for admin stuff.
   services.openssh.ports = [ 2200 ];
   networking.firewall.allowedTCPPorts = [
     80
