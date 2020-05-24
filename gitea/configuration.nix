@@ -16,11 +16,10 @@
   environment.systemPackages = [ pkgs.kakoune-unwrapped ];
 
   ## Security Stuff
-  services.openssh.ports = [ 2200 ];
   networking.firewall.allowedTCPPorts = [
+    22 # admin ssh
     80
     443
-    2200 # admin ssh
     2222 # gitea ssh
   ];
 
