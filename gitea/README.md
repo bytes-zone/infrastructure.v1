@@ -4,7 +4,7 @@ This is the configuration for the instance of Gitea you're probably looking at r
 
 Here's how to build it:
 
-1. have a `x86_64-linux` builder locally. I use [linuxkit-nix](https://github.com/nix-community/linuxkit-nix).
+1. have a `x86_64-linux` builder locally. I use [LnL7/nix-docker](https://github.com/LnL7/nix-docker).
 2. `cd` here and run `nix-build` to create the system configuration
 3. deploy using `./deploy.sh HOST PATH` where `PATH` is the path to deploy (hint: `./deploy.sh wherever $(nix-build)` works great.)
 
