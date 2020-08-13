@@ -5,7 +5,7 @@ set -euo pipefail
 HOST="${1:-}"
 STORE_PATH="${2:-}"
 if test -z "$HOST" || test -z "$STORE_PATH"; then
-  echo "Usage: ${0} HOST STORE_PATH"
+  echo "Usage: ${0:-} HOST STORE_PATH"
   exit 1
 fi
 STORE_PATH="$(realpath "$STORE_PATH")"
