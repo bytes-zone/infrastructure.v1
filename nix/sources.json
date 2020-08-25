@@ -1,4 +1,10 @@
 {
+    "elo-anything": {
+        "ref": "main",
+        "repo": "ssh://git@git.bytes.zone:2222/brian/elo-anything.git",
+        "rev": "de8c72a95020adaadeb52c19a7174a3f1d7be002",
+        "type": "git"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",

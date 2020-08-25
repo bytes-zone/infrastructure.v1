@@ -104,6 +104,15 @@ resource "cloudflare_record" "git_bytes_zone" {
   proxied = false # git push over SSH doesn't work otherwise
 }
 
+resource "cloudflare_record" "elo_bytes_zone" {
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
+  name    = "elo"
+  type    = "A"
+  value   = digitalocean_droplet.gitea.ipv4_address
+  ttl     = 1 # automatic
+  proxied = false
+}
+
 # Mail
 
 resource "mailgun_domain" "git_bytes_zone" {

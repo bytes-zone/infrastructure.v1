@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+let
+  sources = import ../nix/sources.nix;
+  elo-anything = import sources.elo-anything { };
+in {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
@@ -163,6 +167,13 @@
       enableACME = true;
 
       root = ./2020.elm-conf.com;
+    };
+
+    virtualHosts."elo.bytes.zone" = {
+      forceSSL = true;
+      enableACME = true;
+
+      root = "${elo-anything}/share/elo-anything";
     };
   };
 
