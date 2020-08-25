@@ -14,3 +14,6 @@ set -x
 nix-copy-closure --to --use-substitutes "$HOST" "$STORE_PATH"
 ssh "$HOST" -- "sudo nix-env --profile /nix/var/nix/profiles/system --set ${STORE_PATH}"
 ssh "$HOST" -- "sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch"
+
+# collect garbage
+ssh "$HOST" -- "nix-collect-garbage --delete-older-than 30d"
