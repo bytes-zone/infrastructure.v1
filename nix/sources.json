@@ -1,8 +1,8 @@
 {
     "elo-anything": {
-        "ref": "main",
+        "branch": "main",
         "repo": "ssh://git@git.bytes.zone:2222/brian/elo-anything.git",
-        "rev": "de8c72a95020adaadeb52c19a7174a3f1d7be002",
+        "rev": "fc8623bfc33e7637ac8bffd29a5c11f3533cdf80",
         "type": "git"
     },
     "niv": {
