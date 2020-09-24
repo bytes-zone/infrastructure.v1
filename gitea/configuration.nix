@@ -51,11 +51,17 @@ in {
 
     # I could have done all this by hand, but I didn't have to because Nixos is
     # nice. ❤️
-    ensureDatabases = [ "gitea" ];
-    ensureUsers = [{
-      name = "gitea";
-      ensurePermissions = { "DATABASE gitea" = "ALL PRIVILEGES"; };
-    }];
+    ensureDatabases = [ "gitea" "concourse" ];
+    ensureUsers = [
+      {
+        name = "gitea";
+        ensurePermissions = { "DATABASE gitea" = "ALL PRIVILEGES"; };
+      }
+      {
+        name = "concourse";
+        ensurePermissions = { "DATABASE concourse" = "ALL PRIVILEGES"; };
+      }
+    ];
   };
 
   ## Redis
