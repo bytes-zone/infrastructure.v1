@@ -181,6 +181,13 @@ in {
 
       root = "${elo-anything}/share/elo-anything";
     };
+
+    virtualHosts."ci.bytes.zone" = {
+      forceSSL = true;
+      enableACME = true;
+
+      root = "${elo-anything}/share/elo-anything";
+    };
   };
 
   security.acme = {
