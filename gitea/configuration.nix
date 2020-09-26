@@ -220,7 +220,8 @@ in {
       ];
       environment = {
         CONCOURSE_CLUSTER_NAME = "bytes.zone";
-        CONCOURSE_ADD_LOCAL_USER = "brian:test";
+        CONCOURSE_ADD_LOCAL_USER =
+          "brian:${builtins.readFile ./concourse_password}";
         CONCOURSE_MAIN_TEAM_LOCAL_USER = "brian";
         CONCOURSE_EXTERNAL_URL = "https://ci.bytes.zone";
 

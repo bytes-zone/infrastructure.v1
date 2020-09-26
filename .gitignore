@@ -1,4 +1,5 @@
 /gitea/backups-*.key
+/gitea/concourse_password
 /gitea/result
 /gitea/smtp_password
 /result
