@@ -237,6 +237,19 @@ in {
         CONCOURSE_POSTGRES_DATABASE = "concourse";
       };
     };
+
+    concourse-worker = {
+      image = "${concourse-image}";
+      cmd = [ "worker" ];
+      ports = [ "7777:7777" "7788:7788" ];
+      extraDockerOptions = [ "--privileged" "--link=concourse-web" ];
+      volumes = [ "/home/concourse:/home/concourse:ro" ];
+      environment = {
+        CONCOURSE_TSA_HOST = "concourse-web:2222";
+        CONCOURSE_TSA_PUBLIC_KEY = "/home/concourse/tsa_host_key.pub";
+        CONCOURSE_TSA_WORKER_PRIVATE_KEY = "/home/concourse/worker_key";
+      };
+    };
   };
 
   ## backups
