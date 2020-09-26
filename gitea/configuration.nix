@@ -46,6 +46,7 @@ in {
       nixos root     postgres
       nixos postgres postgres
       nixos gitea    gitea
+      nixos root     concourse
     '';
     authentication = "local all all ident map=nixos";
 
@@ -186,13 +187,55 @@ in {
       forceSSL = true;
       enableACME = true;
 
-      root = "${elo-anything}/share/elo-anything";
+      locations."/".proxyPass = "http://localhost:8080";
     };
   };
 
   security.acme = {
     email = "brian@brianthicks.com";
     acceptTerms = true;
+  };
+
+  ## CI with Concourse
+  users.groups.concourse = { };
+  users.users.concourse = {
+    group = "concourse";
+    home = "/home/concourse";
+    createHome = true;
+  };
+  virtualisation.docker = {
+    enable = true;
+    autoPrune.enable = true;
+  };
+
+  docker-containers = let concourse-image = "concourse/concourse:6.5.1";
+  in {
+    concourse-web = {
+      image = "${concourse-image}";
+      cmd = [ "web" ];
+      ports = [ "8079:8079" "8080:8080" ];
+      volumes = [
+        "/home/concourse:/home/concourse:ro"
+        "/var/run/postgresql:/var/run/postgresql"
+      ];
+      environment = {
+        CONCOURSE_CLUSTER_NAME = "bytes.zone";
+        CONCOURSE_ADD_LOCAL_USER = "brian:test";
+        CONCOURSE_MAIN_TEAM_LOCAL_USER = "brian";
+        CONCOURSE_EXTERNAL_URL = "https://ci.bytes.zone";
+
+        # keys
+        CONCOURSE_SESSION_SIGNING_KEY = "/home/concourse/session_signing_key";
+        CONCOURSE_TSA_HOST_KEY = "/home/concourse/tsa_host_key";
+        CONCOURSE_TSA_AUTHORIZED_KEYS =
+          "/home/concourse/authorized_worker_keys";
+
+        # database
+        CONCOURSE_POSTGRES_SOCKET = "/var/run/postgresql";
+        CONCOURSE_POSTGRES_USER = "concourse";
+        CONCOURSE_POSTGRES_DATABASE = "concourse";
+      };
+    };
   };
 
   ## backups
