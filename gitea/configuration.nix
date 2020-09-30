@@ -2,6 +2,7 @@
 let
   sources = import ../nix/sources.nix;
   elo-anything = import sources.elo-anything { };
+  comma = import sources.comma { inherit pkgs; };
 in {
   imports = [
     ./hardware-configuration.nix
@@ -17,7 +18,7 @@ in {
   ];
 
   # utilities
-  environment.systemPackages = [ pkgs.kakoune-unwrapped ];
+  environment.systemPackages = [ pkgs.kakoune-unwrapped comma ];
 
   ## Security Stuff
   networking.firewall.allowedTCPPorts = [
