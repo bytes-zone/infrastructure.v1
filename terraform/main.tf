@@ -27,14 +27,6 @@ provider "cloudflare" {
   api_token = var.cloudflare_token
 }
 
-variable "mailgun_token" {}
-
-provider "mailgun" {
-  version = "~> 0.2"
-
-  api_key = var.mailgun_token
-}
-
 # INFRASTRUCTURE
 
 variable "region" { default = "nyc1" }
@@ -120,54 +112,6 @@ resource "cloudflare_record" "ci_bytes_zone" {
   value   = digitalocean_droplet.gitea.ipv4_address
   ttl     = 1     # automatic
   proxied = false # git push over SSH doesn't work otherwise
-}
-
-# Mail
-
-resource "mailgun_domain" "git_bytes_zone" {
-  name        = cloudflare_record.git_bytes_zone.hostname
-  region      = "us"
-  spam_action = "disabled"
-}
-
-resource "cloudflare_record" "git_bytes_zone_spf" {
-  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
-  name    = "git"
-  type    = "TXT"
-  value   = "v=spf1 include:mailgun.org ~all"
-  ttl     = 1 # automatic
-}
-
-resource "cloudflare_record" "git_bytes_zone_domainkey" {
-  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
-  name    = "k1._domainkey.git"
-  type    = "TXT"
-  value   = "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrpdr7dT7MIv5L/yCvX2et+EMuAZtOa+PcZGc7DEPKNHlHJnp11db+syhFxLG1NkGd1hFW/TPXWPpoHXmJa4PQx0S+4UnC0cHaYwbTE1xMJRijRps1XsfmA9a7p9bD60xOTGb5EoO3wMxUbhuvDZfBtVwEjCBdJ8ZqWvkOFfyBKQIDAQAB"
-  ttl     = 1 # automatic
-}
-
-resource "cloudflare_record" "git_bytes_zone_mxa" {
-  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
-  name    = "git"
-  type    = "MX"
-  value   = "mxa.mailgun.org"
-  ttl     = 1 # automatic
-}
-
-resource "cloudflare_record" "git_bytes_zone_mxb" {
-  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
-  name    = "git"
-  type    = "MX"
-  value   = "mxb.mailgun.org"
-  ttl     = 1 # automatic
-}
-
-resource "cloudflare_record" "git_bytes_zone_return" {
-  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
-  name    = "email.git"
-  type    = "CNAME"
-  value   = "mailgun.org"
-  ttl     = 1 # automatic
 }
 
 # Netlify Blog
