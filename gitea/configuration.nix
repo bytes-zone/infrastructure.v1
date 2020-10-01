@@ -47,23 +47,16 @@ in {
       nixos root     postgres
       nixos postgres postgres
       nixos gitea    gitea
-      nixos root     concourse
     '';
     authentication = "local all all ident map=nixos";
 
     # I could have done all this by hand, but I didn't have to because Nixos is
     # nice. ❤️
-    ensureDatabases = [ "gitea" "concourse" ];
-    ensureUsers = [
-      {
-        name = "gitea";
-        ensurePermissions = { "DATABASE gitea" = "ALL PRIVILEGES"; };
-      }
-      {
-        name = "concourse";
-        ensurePermissions = { "DATABASE concourse" = "ALL PRIVILEGES"; };
-      }
-    ];
+    ensureDatabases = [ "gitea" ];
+    ensureUsers = [{
+      name = "gitea";
+      ensurePermissions = { "DATABASE gitea" = "ALL PRIVILEGES"; };
+    }];
   };
 
   ## Redis
@@ -195,62 +188,6 @@ in {
   security.acme = {
     email = "brian@brianthicks.com";
     acceptTerms = true;
-  };
-
-  ## CI with Concourse
-  users.groups.concourse = { };
-  users.users.concourse = {
-    group = "concourse";
-    home = "/home/concourse";
-    createHome = true;
-  };
-  virtualisation.docker = {
-    enable = true;
-    autoPrune.enable = true;
-  };
-
-  docker-containers = let concourse-image = "concourse/concourse:6.5.1";
-  in {
-    concourse-web = {
-      image = "${concourse-image}";
-      cmd = [ "web" ];
-      ports = [ "8079:8079" "8080:8080" ];
-      volumes = [
-        "/home/concourse:/home/concourse:ro"
-        "/var/run/postgresql:/var/run/postgresql"
-      ];
-      environment = {
-        CONCOURSE_CLUSTER_NAME = "bytes.zone";
-        CONCOURSE_ADD_LOCAL_USER =
-          "brian:${builtins.readFile ./concourse_password}";
-        CONCOURSE_MAIN_TEAM_LOCAL_USER = "brian";
-        CONCOURSE_EXTERNAL_URL = "https://ci.bytes.zone";
-
-        # keys
-        CONCOURSE_SESSION_SIGNING_KEY = "/home/concourse/session_signing_key";
-        CONCOURSE_TSA_HOST_KEY = "/home/concourse/tsa_host_key";
-        CONCOURSE_TSA_AUTHORIZED_KEYS =
-          "/home/concourse/authorized_worker_keys";
-
-        # database
-        CONCOURSE_POSTGRES_SOCKET = "/var/run/postgresql";
-        CONCOURSE_POSTGRES_USER = "concourse";
-        CONCOURSE_POSTGRES_DATABASE = "concourse";
-      };
-    };
-
-    concourse-worker = {
-      image = "${concourse-image}";
-      cmd = [ "worker" ];
-      ports = [ "7777:7777" "7788:7788" ];
-      extraDockerOptions = [ "--privileged" "--link=concourse-web" ];
-      volumes = [ "/home/concourse:/home/concourse:ro" ];
-      environment = {
-        CONCOURSE_TSA_HOST = "concourse-web:2222";
-        CONCOURSE_TSA_PUBLIC_KEY = "/home/concourse/tsa_host_key.pub";
-        CONCOURSE_TSA_WORKER_PRIVATE_KEY = "/home/concourse/worker_key";
-      };
-    };
   };
 
   ## backups
