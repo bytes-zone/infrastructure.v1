@@ -176,13 +176,6 @@ in {
 
       root = "${bad-datalog}/share/datalog";
     };
-
-    virtualHosts."ci.bytes.zone" = {
-      forceSSL = true;
-      enableACME = true;
-
-      locations."/".proxyPass = "http://localhost:8080";
-    };
   };
 
   security.acme = {
