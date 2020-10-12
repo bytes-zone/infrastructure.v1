@@ -2,6 +2,7 @@
 let
   sources = import ../nix/sources.nix;
   elo-anything = import sources.elo-anything { };
+  bad-datalog = import sources.bad-datalog { };
   comma = import sources.comma { inherit pkgs; };
 in {
   imports = [
@@ -167,6 +168,13 @@ in {
       enableACME = true;
 
       root = "${elo-anything}/share/elo-anything";
+    };
+
+    virtualHosts."datalog.bytes.zone" = {
+      forceSSL = true;
+      enableACME = true;
+
+      root = "${bad-datalog}/share/datalog";
     };
 
     virtualHosts."ci.bytes.zone" = {
