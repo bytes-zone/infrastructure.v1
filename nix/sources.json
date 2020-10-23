@@ -2,7 +2,7 @@
     "bad-datalog": {
         "branch": "main",
         "repo": "ssh://git@git.bytes.zone:2222/brian/bad-datalog.git",
-        "rev": "c8bbb6315de44038e789dbb4794cd9297c103f5b",
+        "rev": "5bb24aeb855aebd819ef8025e83507ed21c2872a",
         "type": "git"
     },
     "comma": {
