@@ -86,47 +86,52 @@ in {
     # only for people I invite!
     disableRegistration = true;
 
-    extraConfig = ''
-      [ui]
-      DEFAULT_THEME = gitea
+    rootUrl = "https://git.bytes.zone";
 
-      [server]
-      START_SSH_SERVER = true
-      SSH_PORT = 2222
+    ssh = {
+      enable = true;
+      clonePort = 2222;
+    };
 
-      LANDING_PAGE = explore
+    settings = {
+      ui.DEFAULT_THEME = "gitea";
 
-      LFS_START_SERVER = true
-      LFS_CONTENT_PATH = /mnt/objects/gitea/lfs
+      server = {
+        LANDING_PAGE = "explore";
 
-      ROOT_URL = https://git.bytes.zone/
-      SSH_DOMAIN = git.bytes.zone
-      BUILTIN_SSH_SERVER_USER = git
+        # ssh
+        START_SSH_SERVER = true;
+        BUILTIN_SSH_SERVER_USER = "git";
 
-      [service]
-      REGISTER_EMAIL_CONFIRM = true
-      ENABLE_NOTIFY_MAIL = true
+        # gitea
+        LFS_START_SERVER = true;
+        LFS_CONTENT_PATH = "/mnt/objects/gitea/lfs";
+      };
 
-      [attachment]
-      ENABLED = true
-      PATH = /mnt/objects/gitea/attachments
+      attachment = {
+        ENABLED = true;
+        PATH = "/mnt/objects/gitea/attachments";
+      };
 
-      [cache]
-      ADAPTER = redis
-      HOST = network:tcp,addr=:6379,db=0
+      cache = {
+        ADAPTER = "redis";
+        HOST = "network:tcp,addr=:6379,db=0";
+      };
 
-      [session]
-      PROVIDER = redis
-      PROVIDER_CONFIG = network=tcp,addr=:6379,db=1
+      session = {
+        PROVIDER = "redis";
+        PROVIDER_CONFIG = "network=tcp,addr=:6379,db=1";
+      };
 
-      [other]
-      SHOW_FOOTER_BRANDING = false
+      log = {
+        ENABLE_XORM_LOG = false;
+        ENABLE_ACCESS_LOG = false;
+      };
 
-      [log]
-      LEVEL = Warning
-      ENABLE_XORM_LOG = false
-      ENABLE_ACCESS_LOG = false
-    '';
+      other.SHOW_FOOTER_BRANDING = false;
+    };
+
+    log.level = "Warn";
   };
 
   ## Nginx
