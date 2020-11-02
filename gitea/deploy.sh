@@ -11,7 +11,7 @@ fi
 STORE_PATH="$(realpath "$STORE_PATH")"
 
 set -x
-nix-copy-closure --to --use-substitutes "$HOST" "$STORE_PATH"
+nix-copy-closure --use-substitutes --to "$HOST" "$STORE_PATH"
 ssh "$HOST" -- "sudo nix-env --profile /nix/var/nix/profiles/system --set ${STORE_PATH}"
 ssh "$HOST" -- "sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch"
 
