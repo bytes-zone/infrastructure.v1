@@ -2,7 +2,7 @@
     "bad-datalog": {
         "branch": "main",
         "repo": "ssh://git@git.bytes.zone:2222/brian/bad-datalog.git",
-        "rev": "5bb24aeb855aebd819ef8025e83507ed21c2872a",
+        "rev": "c7c988659683adbfe95d8bac78bec39055a19c4b",
         "type": "git"
     },
     "comma": {
@@ -32,7 +32,7 @@
     "elo-anything": {
         "branch": "main",
         "repo": "ssh://git@git.bytes.zone:2222/brian/elo-anything.git",
-        "rev": "5231f8f95128849d77bffe72230b6640f010d810",
+        "rev": "2ae4cd999d368f1c556485c81cf786157370f73d",
         "type": "git"
     },
     "niv": {

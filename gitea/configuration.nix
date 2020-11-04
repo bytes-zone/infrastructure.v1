@@ -172,14 +172,14 @@ in {
       forceSSL = true;
       enableACME = true;
 
-      root = "${elo-anything}/share/elo-anything";
+      root = "${elo-anything.elo-anything}/share/elo-anything";
     };
 
     virtualHosts."datalog.bytes.zone" = {
       forceSSL = true;
       enableACME = true;
 
-      root = "${bad-datalog}/share/datalog";
+      root = "${bad-datalog.datalog}/share/datalog";
     };
   };
 
