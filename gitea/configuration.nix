@@ -3,6 +3,7 @@ let
   sources = import ../nix/sources.nix;
   elo-anything = import sources.elo-anything { };
   bad-datalog = import sources.bad-datalog { };
+  bytes-zone = import sources."bytes.zone" { };
   comma = import sources.comma { inherit pkgs; };
 in {
   imports = [
@@ -180,6 +181,20 @@ in {
       enableACME = true;
 
       root = "${bad-datalog.datalog}/share/datalog";
+    };
+
+    virtualHosts."bytes.zone" = {
+      forceSSL = false;
+      enableACME = false;
+
+      root = "${bytes-zone}/share/bytes.zone";
+    };
+
+    virtualHosts."www.bytes.zone" = {
+      forceSSL = false;
+      enableACME = false;
+
+      globalRedirect = "https://bytes.zone";
     };
   };
 

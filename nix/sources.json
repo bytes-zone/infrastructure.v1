@@ -5,6 +5,12 @@
         "rev": "4cfbd0ceaf624def5be747d0bbe03692a351bd0e",
         "type": "git"
     },
+    "bytes.zone": {
+        "branch": "main",
+        "repo": "ssh://git@git.bytes.zone:2222/bytes.zone/bytes.zone.git",
+        "rev": "3dce722efb01b828a4b74478902bbf2ef394faa5",
+        "type": "git"
+    },
     "comma": {
         "branch": "master",
         "description": null,
