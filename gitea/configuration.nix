@@ -184,15 +184,15 @@ in {
     };
 
     virtualHosts."bytes.zone" = {
-      forceSSL = false;
-      enableACME = false;
+      forceSSL = true;
+      enableACME = true;
 
       root = "${bytes-zone}/share/bytes.zone";
     };
 
     virtualHosts."www.bytes.zone" = {
-      forceSSL = false;
-      enableACME = false;
+      forceSSL = true;
+      enableACME = true;
 
       globalRedirect = "https://bytes.zone";
     };
