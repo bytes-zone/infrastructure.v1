@@ -23,18 +23,6 @@
         "url": "https://github.com/Shopify/comma/archive/4a62ec17e20ce0e738a8e5126b4298a73903b468.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "concourse": {
-        "branch": "v6.5.1",
-        "description": "Concourse is a container-based continuous thing-doer written in Go and Elm.",
-        "homepage": "https://concourse-ci.org",
-        "owner": "concourse",
-        "repo": "concourse",
-        "rev": "5edc00f848aa6c3659b25c1900e1be31a6c82b4e",
-        "sha256": "0ldw40xn9nb5picly32nq558x0klvkyrr9af0jfngbvm4l5209bc",
-        "type": "tarball",
-        "url": "https://github.com/concourse/concourse/archive/5edc00f848aa6c3659b25c1900e1be31a6c82b4e.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "elo-anything": {
         "branch": "main",
         "repo": "ssh://git@git.bytes.zone:2222/brian/elo-anything.git",
