@@ -191,7 +191,7 @@ in {
 
       extraConfig = ''
         add_header Strict-Transport-Security max-age=15768000 always;
-        add_header Content-Security-Policy "default-src 'self'" always;
+        add_header Content-Security-Policy "default-src 'self'; object-src 'none'; require-trusted-types-for 'script'" always;
         add_header X-Frame-Options "SAMEORIGIN" always;
         add_header X-Content-Type-Options "nosniff" always;
         add_header X-XSS-Protection "1; mode=block" always;
