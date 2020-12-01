@@ -193,6 +193,7 @@ in {
         add_header Strict-Transport-Security max-age=15768000;
         add_header Content-Security-Policy "default-src 'self'";
         add_header X-Frame-Options "SAMEORIGIN" always;
+        add_header X-Content-Type-Options "nosniff" always;
       '';
     };
 
