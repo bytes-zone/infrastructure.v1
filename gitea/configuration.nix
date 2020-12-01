@@ -192,6 +192,7 @@ in {
       extraConfig = ''
         add_header Strict-Transport-Security max-age=15768000;
         add_header Content-Security-Policy "default-src 'self'";
+        add_header X-Frame-Options "SAMEORIGIN" always;
       '';
     };
 
