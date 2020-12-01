@@ -188,6 +188,10 @@ in {
       enableACME = true;
 
       root = "${bytes-zone}/share/bytes.zone";
+
+      extraConfig = ''
+        add_header Strict-Transport-Security max-age=15768000;
+      '';
     };
 
     virtualHosts."www.bytes.zone" = {
