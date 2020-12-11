@@ -8,7 +8,7 @@
     "bytes.zone": {
         "branch": "main",
         "repo": "ssh://git@git.bytes.zone:2222/bytes.zone/bytes.zone.git",
-        "rev": "a84f7417c9e37e269fffafbab5d45ec85e876f35",
+        "rev": "62cceb417d8374d71f610376b60ef874159288a8",
         "type": "git"
     },
     "comma": {
@@ -47,10 +47,10 @@
         "homepage": null,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3a02dc9edb283beb9580c9329f242ad705a721c3",
-        "sha256": "1d1lqjqqqskfg5b0hyy9q94yqzgwsnb5i0pcl71q378hl8wbgj6x",
+        "rev": "65c9cc79f1d179713c227bf447fb0dac384cdcda",
+        "sha256": "0whxlm098vas4ngq6hm3xa4mdd2yblxcl5x5ny216zajp08yp1wf",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixpkgs/archive/3a02dc9edb283beb9580c9329f242ad705a721c3.tar.gz",
+        "url": "https://github.com/nixos/nixpkgs/archive/65c9cc79f1d179713c227bf447fb0dac384cdcda.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
