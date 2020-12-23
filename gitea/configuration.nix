@@ -48,19 +48,26 @@ in {
     # our logins are tied to system users.
     enableTCPIP = false;
     identMap = ''
-      nixos root     postgres
-      nixos postgres postgres
-      nixos gitea    gitea
+      nixos root        postgres
+      nixos postgres    postgres
+      nixos gitea       gitea
+      nixos goatcounter goatcounter
     '';
     authentication = "local all all ident map=nixos";
 
     # I could have done all this by hand, but I didn't have to because Nixos is
     # nice. ❤️
-    ensureDatabases = [ "gitea" ];
-    ensureUsers = [{
-      name = "gitea";
-      ensurePermissions = { "DATABASE gitea" = "ALL PRIVILEGES"; };
-    }];
+    ensureDatabases = [ "gitea" "goatcounter" ];
+    ensureUsers = [
+      {
+        name = "gitea";
+        ensurePermissions = { "DATABASE gitea" = "ALL PRIVILEGES"; };
+      }
+      {
+        name = "goatcounter";
+        ensurePermissions = { "DATABASE goatcounter" = "ALL PRIVILEGES"; };
+      }
+    ];
   };
 
   ## Redis
