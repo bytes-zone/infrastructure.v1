@@ -220,8 +220,8 @@ in {
     };
 
     virtualHosts."stats.bytes.zone" = {
-      enableACME = false;
-      forceSSL = false;
+      enableACME = true;
+      forceSSL = true;
 
       locations."/".proxyPass = "http://localhost:8081";
     };
