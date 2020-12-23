@@ -148,6 +148,11 @@ in {
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
+    commonHttpConfig = ''
+      log_format vcombined '$host:$server_port $remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent"';
+      access_log /var/log/nginx/access.log vcombined;
+    '';
+
     virtualHosts."git.bytes.zone" = {
       default = true;
 
