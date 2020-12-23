@@ -218,6 +218,13 @@ in {
 
       globalRedirect = "https://bytes.zone";
     };
+
+    virtualHosts."stats.bytes.zone" = {
+      enableACME = false;
+      forceSSL = false;
+
+      locations."/".proxyPass = "http://localhost:8081";
+    };
   };
 
   security.acme = {
