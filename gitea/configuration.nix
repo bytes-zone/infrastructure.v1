@@ -5,6 +5,7 @@ let
   bad-datalog = import sources.bad-datalog { };
   bytes-zone = import sources."bytes.zone" { };
   comma = import sources.comma { inherit pkgs; };
+  goatcounter = import ../pkgs/goatcounter { inherit pkgs; };
 in {
   imports = [
     ./hardware-configuration.nix
@@ -20,7 +21,8 @@ in {
   ];
 
   # utilities
-  environment.systemPackages = [ pkgs.kakoune-unwrapped pkgs.goaccess comma ];
+  environment.systemPackages =
+    [ pkgs.kakoune-unwrapped pkgs.goaccess comma goatcounter ];
 
   ## Security Stuff
   networking.firewall.allowedTCPPorts = [
