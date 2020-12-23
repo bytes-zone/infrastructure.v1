@@ -205,7 +205,7 @@ in {
 
       extraConfig = ''
         add_header Strict-Transport-Security max-age=15768000 always;
-        add_header Content-Security-Policy "default-src 'none'; child-src https:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:" always;
+        add_header Content-Security-Policy "default-src 'none'; child-src https:; script-src 'self' https://stats.bytes.zone; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://stats.bytes.zone/count" always;
         add_header X-Frame-Options "SAMEORIGIN" always;
         add_header X-Content-Type-Options "nosniff" always;
         add_header X-XSS-Protection "1; mode=block" always;
