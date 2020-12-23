@@ -20,7 +20,7 @@ in {
   ];
 
   # utilities
-  environment.systemPackages = [ pkgs.kakoune-unwrapped comma ];
+  environment.systemPackages = [ pkgs.kakoune-unwrapped pkgs.goaccess comma ];
 
   ## Security Stuff
   networking.firewall.allowedTCPPorts = [
