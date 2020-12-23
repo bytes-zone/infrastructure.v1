@@ -29,6 +29,18 @@
         "rev": "2ae4cd999d368f1c556485c81cf786157370f73d",
         "type": "git"
     },
+    "goatcounter": {
+        "branch": "release-1.4",
+        "description": "Easy web analytics. No tracking of personal data.",
+        "homepage": "https://www.goatcounter.com",
+        "owner": "zgoat",
+        "repo": "goatcounter",
+        "rev": "9303ec02e214354a6c85e9868cba79e4d9abb818",
+        "sha256": "1d0vcchw5222q5bj1gk8ph5388qmkxyxz3zhmsz46vv64appmgaw",
+        "type": "tarball",
+        "url": "https://github.com/zgoat/goatcounter/archive/9303ec02e214354a6c85e9868cba79e4d9abb818.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",
