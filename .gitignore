@@ -1,9 +1,6 @@
-/.bin/fly
 /gitea/backups-*.key
 /gitea/report.html
 /gitea/result
-/gitea/smtp_password
 /result
-/rpg/backups-*.key
 /terraform/.terraform/
 /terraform/terraform.tfvars
