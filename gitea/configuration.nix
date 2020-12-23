@@ -236,4 +236,8 @@ in {
       period = "02:15";
     };
   };
+
+  ## goatcounter
+  users.groups.goatcounter = { };
+  users.users.goatcounter = { extraGroups = [ "goatcounter" ]; };
 }
