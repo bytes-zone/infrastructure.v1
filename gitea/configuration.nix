@@ -254,4 +254,25 @@ in {
   ## goatcounter
   users.groups.goatcounter = { };
   users.users.goatcounter = { extraGroups = [ "goatcounter" ]; };
+
+  systemd.services.goatcounter = {
+    description = "Privacy-preserving web analytics";
+    documentation = [ "https://github.com/zgoat/goatcounter" ];
+
+    enable = true;
+
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+
+    path = [ goatcounter ];
+    preStart =
+      "goatcounter migrate -db 'postgres://user=goatcounter dbname=goatcounter host=/run/postgresql'";
+    script =
+      "goatcounter serve -db 'postgres://user=goatcounter dbname=goatcounter host=/run/postgresql' -listen localhost:8081 -tls none";
+
+    serviceConfig = {
+      User = "goatcounter";
+      Group = "goatcounter";
+    };
+  };
 }
