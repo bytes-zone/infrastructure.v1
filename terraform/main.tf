@@ -155,3 +155,13 @@ resource "cloudflare_record" "git_bytes_zone_caa" {
     value = "letsencrypt.org"
   }
 }
+
+## Google Verification
+
+resource "cloudflare_record" "bytes_zone_verification" {
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
+  type    = "TXT"
+  name    = "@"
+  value   = "google-site-verification=56ARNdYATpXCvRV8MdmtBd_6LI5iLpzs2MfUuDs3FYo"
+  ttl     = 1 # automatic
+}
