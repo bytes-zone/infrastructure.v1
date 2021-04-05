@@ -165,3 +165,108 @@ resource "cloudflare_record" "bytes_zone_verification" {
   value   = "google-site-verification=56ARNdYATpXCvRV8MdmtBd_6LI5iLpzs2MfUuDs3FYo"
   ttl     = 1 # automatic
 }
+
+## elm-conf
+
+data "cloudflare_zones" "elm_conf" {
+  filter {
+    name = "elm-conf.com"
+  }
+}
+
+resource "cloudflare_record" "_2020_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  name    = "2020"
+  type    = "A"
+  value   = digitalocean_droplet.gitea.ipv4_address
+  ttl     = 1 # automatic
+  proxied = false
+}
+
+resource "cloudflare_record" "apex_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  name    = "@"
+  type    = "A"
+  value   = digitalocean_droplet.gitea.ipv4_address
+  ttl     = 1 # automatic
+  proxied = true
+}
+
+resource "cloudflare_record" "www_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  name    = "www"
+  type    = "A"
+  value   = digitalocean_droplet.gitea.ipv4_address
+  ttl     = 1 # automatic
+  proxied = true
+}
+
+resource "cloudflare_record" "_2019_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  name    = "2019"
+  type    = "CNAME"
+  value   = "elm-conf-2019.netlify.com"
+  ttl     = 1 # automatic
+  proxied = true
+}
+
+# elm-conf mail
+
+resource "cloudflare_record" "k1_domainkey_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  name    = "k1._domainkey"
+  type    = "CNAME"
+  value   = "dkim.mcsv.net"
+  ttl     = 1 # automatic
+  proxied = true
+}
+
+resource "cloudflare_record" "mx_10_elm_conf" {
+  zone_id  = data.cloudflare_zones.elm_conf.zones[0].id
+  name     = "@"
+  type     = "MX"
+  value    = "mail.protonmail.ch"
+  priority = 10
+  ttl      = 1 # automatic
+}
+
+resource "cloudflare_record" "mx_20_elm_conf" {
+  zone_id  = data.cloudflare_zones.elm_conf.zones[0].id
+  name     = "@"
+  type     = "MX"
+  value    = "mailsec.protonmail.ch"
+  priority = 20
+  ttl      = 1 # automatic
+}
+
+resource "cloudflare_record" "_dmarc_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  name    = "_dmarc"
+  type    = "TXT"
+  value   = "v=DMARC1; p=none; rua=mailto:hey@elm-conf.com"
+  ttl     = 1 # automatic
+}
+
+resource "cloudflare_record" "spf_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  name    = "elm-conf.com"
+  type    = "TXT"
+  value   = "v=spf1 include:_spf.protonmail.ch mx include:servers.mcsv.net ~all"
+  ttl     = 1 # automatic
+}
+
+resource "cloudflare_record" "protonmail_verification_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  name    = "elm-conf.com"
+  type    = "TXT"
+  value   = "protonmail-verification=a957cb0a0974d0b39dcc9b05cb84defa3268d456"
+  ttl     = 1 # automatic
+}
+
+resource "cloudflare_record" "protonmail_domainkey_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  name    = "protonmail._domainkey"
+  type    = "TXT"
+  value   = "v=DKIM1;k=rsa;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk7jO/4l4nHQqj1tPMZrL+Zg+pFW5xoJe8ZVwu/FUWxcuUwOd3l3CacuRig8GoniNnNZZPVQ8X/i7RANP/aGIiTcDHah74RB2oFzJ7ykeK8OxyRZuLsORTK7PFH/ac8EUQ3HXGY7j13z7ltLW3wMlPrVE43OIb4R/yUDqEm5ZmfTIeB8qOpUKLyuduOx+BMEuJDYQNM+iBN2T2ZYZP0GJz1Y+t2AUsPQdbwz3yjKculeBcdNbNZO84yup6WwTIYpvRTgFbS7oYqPBporN2vofNjhrCLxhiXZGr7gNsg/b2UJuiwPcWM4e426URJMtltmw10JqlYSUi5vuDMEK+bmxFQIDAQAB;"
+  ttl     = 1 # automatic
+}
