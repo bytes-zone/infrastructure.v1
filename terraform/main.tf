@@ -212,20 +212,11 @@ resource "cloudflare_record" "_2019_elm_conf" {
 
 # elm-conf mail
 
-resource "cloudflare_record" "k1_domainkey_elm_conf" {
-  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
-  name    = "k1._domainkey"
-  type    = "CNAME"
-  value   = "dkim.mcsv.net"
-  ttl     = 1 # automatic
-  proxied = true
-}
-
 resource "cloudflare_record" "mx_10_elm_conf" {
   zone_id  = data.cloudflare_zones.elm_conf.zones[0].id
   name     = "@"
   type     = "MX"
-  value    = "mail.protonmail.ch"
+  value    = "in1-smtp.messagingengine.com"
   priority = 10
   ttl      = 1 # automatic
 }
@@ -234,9 +225,36 @@ resource "cloudflare_record" "mx_20_elm_conf" {
   zone_id  = data.cloudflare_zones.elm_conf.zones[0].id
   name     = "@"
   type     = "MX"
-  value    = "mailsec.protonmail.ch"
+  value    = "in2-smtp.messagingengine.com"
   priority = 20
   ttl      = 1 # automatic
+}
+
+resource "cloudflare_record" "fm1_domainkey_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  type    = "CNAME"
+  name    = "fm1._domainkey"
+  value   = "fm1.elm-conf.com.dkim.fmhosted.com"
+  ttl     = 1 # automatic
+  proxied = false
+}
+
+resource "cloudflare_record" "fm2_domainkey_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  type    = "CNAME"
+  name    = "fm2._domainkey"
+  value   = "fm2.elm-conf.com.dkim.fmhosted.com"
+  ttl     = 1 # automatic
+  proxied = false
+}
+
+resource "cloudflare_record" "fm3_domainkey_elm_conf" {
+  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
+  type    = "CNAME"
+  name    = "fm3._domainkey"
+  value   = "fm3.elm-conf.com.dkim.fmhosted.com"
+  ttl     = 1 # automatic
+  proxied = false
 }
 
 resource "cloudflare_record" "_dmarc_elm_conf" {
@@ -249,24 +267,8 @@ resource "cloudflare_record" "_dmarc_elm_conf" {
 
 resource "cloudflare_record" "spf_elm_conf" {
   zone_id = data.cloudflare_zones.elm_conf.zones[0].id
-  name    = "elm-conf.com"
+  name    = "@"
   type    = "TXT"
-  value   = "v=spf1 include:_spf.protonmail.ch mx include:servers.mcsv.net ~all"
-  ttl     = 1 # automatic
-}
-
-resource "cloudflare_record" "protonmail_verification_elm_conf" {
-  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
-  name    = "elm-conf.com"
-  type    = "TXT"
-  value   = "protonmail-verification=a957cb0a0974d0b39dcc9b05cb84defa3268d456"
-  ttl     = 1 # automatic
-}
-
-resource "cloudflare_record" "protonmail_domainkey_elm_conf" {
-  zone_id = data.cloudflare_zones.elm_conf.zones[0].id
-  name    = "protonmail._domainkey"
-  type    = "TXT"
-  value   = "v=DKIM1;k=rsa;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk7jO/4l4nHQqj1tPMZrL+Zg+pFW5xoJe8ZVwu/FUWxcuUwOd3l3CacuRig8GoniNnNZZPVQ8X/i7RANP/aGIiTcDHah74RB2oFzJ7ykeK8OxyRZuLsORTK7PFH/ac8EUQ3HXGY7j13z7ltLW3wMlPrVE43OIb4R/yUDqEm5ZmfTIeB8qOpUKLyuduOx+BMEuJDYQNM+iBN2T2ZYZP0GJz1Y+t2AUsPQdbwz3yjKculeBcdNbNZO84yup6WwTIYpvRTgFbS7oYqPBporN2vofNjhrCLxhiXZGr7gNsg/b2UJuiwPcWM4e426URJMtltmw10JqlYSUi5vuDMEK+bmxFQIDAQAB;"
+  value   = "v=spf1 include:spf.messagingengine.com ?all"
   ttl     = 1 # automatic
 }
