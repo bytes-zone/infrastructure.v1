@@ -26,7 +26,7 @@
     "elo-anything": {
         "branch": "main",
         "repo": "ssh://git@git.bytes.zone:2222/brian/elo-anything.git",
-        "rev": "054ad832cc7fb887942235f4863faa1a3b53d290",
+        "rev": "e7e78093d140fb8762b9336d81d6c8601671e68c",
         "type": "git"
     },
     "goatcounter": {
@@ -59,10 +59,10 @@
         "homepage": null,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "da7f4c4842520167f65c20ad75ecdbd14e27ae91",
-        "sha256": "0vdq6lkc1sqj85x8r8idpck3igjns8ix57fqf1r5pm4k0qhy7p2m",
+        "rev": "a7ff7a57c96588fd89370568b72751dd15d24e72",
+        "sha256": "0hy3czbdn2hcx3329k63f52y1pb8dh82jyg1mgpd7qv4ip6c6gab",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixpkgs/archive/da7f4c4842520167f65c20ad75ecdbd14e27ae91.tar.gz",
+        "url": "https://github.com/nixos/nixpkgs/archive/a7ff7a57c96588fd89370568b72751dd15d24e72.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
