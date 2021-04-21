@@ -1,11 +1,12 @@
 { pkgs, lib, ... }:
 let
   sources = import ../nix/sources.nix;
-  elo-anything = import sources.elo-anything { };
-  bad-datalog = import sources.bad-datalog { };
-  bytes-zone = import sources."bytes.zone" { };
-  comma = import sources.comma { inherit pkgs; };
-  goatcounter = import ../pkgs/goatcounter { inherit pkgs; };
+
+  bad-datalog = pkgs.callPackage sources.bad-datalog { };
+  bytes-zone = pkgs.callPackage sources."bytes.zone" { };
+  comma = pkgs.callPackage sources.comma { };
+  elo-anything = pkgs.callPackage sources.elo-anything { };
+  goatcounter = pkgs.callPackage ../pkgs/goatcounter { };
 in {
   imports = [
     ./hardware-configuration.nix
