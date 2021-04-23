@@ -123,6 +123,15 @@ resource "cloudflare_record" "elo_bytes_zone" {
   proxied = false
 }
 
+resource "cloudflare_record" "rank_bytes_zone" {
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
+  name    = "rank"
+  type    = "A"
+  value   = digitalocean_droplet.gitea.ipv4_address
+  ttl     = 1 # automatic
+  proxied = false
+}
+
 resource "cloudflare_record" "datalog_bytes_zone" {
   zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "datalog"
