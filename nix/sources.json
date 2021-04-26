@@ -80,7 +80,7 @@
     "rank-anything": {
         "branch": "main",
         "repo": "ssh://git@git.bytes.zone:2222/brian/rank-anything.git",
-        "rev": "edd741da5f7943cbe8091500b57c6d9365d71d2a",
+        "rev": "c641cd18d0902baa763f4cf6ab50e423d8e62d5a",
         "type": "git"
     }
 }
