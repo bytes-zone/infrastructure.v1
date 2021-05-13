@@ -203,7 +203,10 @@ in {
       forceSSL = true;
       enableACME = true;
 
-      root = "${bad-datalog.datalog}/share/datalog";
+      root = "${bad-datalog}/share/bad-datalog";
+      extraConfig = ''
+        try_files $uri /index.html;
+      '';
     };
 
     virtualHosts."bytes.zone" = {
