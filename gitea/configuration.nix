@@ -189,7 +189,7 @@ in {
       forceSSL = true;
       enableACME = true;
 
-      root = "${elo-anything.elo-anything}/share/elo-anything";
+      root = "${elo-anything}/share/elo-anything";
     };
 
     virtualHosts."rank.bytes.zone" = {
