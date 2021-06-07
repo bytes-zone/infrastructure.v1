@@ -265,7 +265,10 @@ in {
 
   ## goatcounter
   users.groups.goatcounter = { };
-  users.users.goatcounter = { extraGroups = [ "goatcounter" ]; };
+  users.users.goatcounter = {
+    isSystemUser = true;
+    extraGroups = [ "goatcounter" ];
+  };
 
   systemd.services.goatcounter = {
     description = "Privacy-preserving web analytics";
