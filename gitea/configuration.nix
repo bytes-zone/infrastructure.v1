@@ -290,4 +290,6 @@ in {
       Group = "goatcounter";
     };
   };
+
+  nix.gc.automatic = true;
 }
