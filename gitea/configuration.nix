@@ -7,7 +7,6 @@ let
   comma = pkgs.callPackage sources.comma { };
   elo-anything = pkgs.callPackage sources.elo-anything { };
   goatcounter = pkgs.callPackage ../pkgs/goatcounter { };
-  rank-anything = pkgs.callPackage sources.rank-anything { };
 in {
   imports = [
     ./hardware-configuration.nix
@@ -190,13 +189,6 @@ in {
       enableACME = true;
 
       root = "${elo-anything}/share/elo-anything";
-    };
-
-    virtualHosts."rank.bytes.zone" = {
-      forceSSL = true;
-      enableACME = true;
-
-      root = "${rank-anything}/share/rank-anything";
     };
 
     virtualHosts."datalog.bytes.zone" = {

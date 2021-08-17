@@ -76,11 +76,5 @@
         "type": "tarball",
         "url": "https://github.com/NixOS/nixpkgs-channels/archive/502845c3e31ef3de0e424f3fcb09217df2ce6df6.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "rank-anything": {
-        "branch": "main",
-        "repo": "ssh://git@git.bytes.zone:2222/brian/rank-anything.git",
-        "rev": "c641cd18d0902baa763f4cf6ab50e423d8e62d5a",
-        "type": "git"
     }
 }
