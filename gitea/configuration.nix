@@ -252,6 +252,7 @@ in {
       directories = [ "/mnt/objects/gitea" "/mnt/db/backups" ];
       keyfile = "/root/backups.key";
       period = "02:15";
+      verbose = true;
     };
   };
 
