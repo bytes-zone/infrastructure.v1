@@ -8,7 +8,7 @@
     "bytes.zone": {
         "branch": "main",
         "repo": "ssh://git@git.bytes.zone:2222/bytes.zone/bytes.zone.git",
-        "rev": "da1c25ab06bdbb52578c2923b525c654c0885bc8",
+        "rev": "c520f8674e6a2eed93900bc157d89c4ca5a8bc59",
         "type": "git"
     },
     "comma": {
