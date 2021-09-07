@@ -244,16 +244,19 @@ in {
     startAt = "*-*-* 01:15:00";
   };
 
-  nixpkgs.config.allowUnfree = true;
-  services.tarsnap = {
-    enable = true;
-    archives.everything = {
-      cachedir = "/var/cache/tarsnap";
-      directories = [ "/mnt/objects/gitea" "/mnt/db/backups" ];
-      keyfile = "/root/backups.key";
-      period = "02:15";
-      verbose = true;
-    };
+  services.borgbackup.jobs.everything = {
+    repo = "fd497h62@fd497h62.repo.borgbase.com:repo";
+
+    startAt = "02:15";
+
+    paths = [ "/mnt/objects/gitea" "/mnt/db/backups" ];
+    compression = "auto,zlib,6";
+
+    encryption.mode = "repokey-blake2";
+    encryption.passCommand = "cat /root/.ssh/borgbackup_key";
+    environment.BORG_RSH = "ssh -i /root/.ssh/borgbackup_ed25519";
+
+    extraCreateArgs = "--stats";
   };
 
   ## goatcounter
