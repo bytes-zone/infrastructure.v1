@@ -245,7 +245,7 @@ in {
   };
 
   services.borgbackup.jobs.everything = {
-    repo = "fd497h62@fd497h62.repo.borgbase.com:repo";
+    repo = "t3a40wda@t3a40wda.repo.borgbase.com:repo";
 
     startAt = "02:15";
 
