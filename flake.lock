@@ -19,7 +19,9 @@
     },
     "bytes-zone": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": [
+          "flake-utils"
+        ],
         "nixpkgs": [
           "nixpkgs-release"
         ]
@@ -56,13 +58,20 @@
       }
     },
     "elo-anything": {
-      "flake": false,
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs-release"
+        ]
+      },
       "locked": {
-        "lastModified": 1621953767,
-        "narHash": "sha256-kNd4oGlmF0/5Fc/n2k87Q62UbC2vcj/EbATt2A3AvHc=",
+        "lastModified": 1631570709,
+        "narHash": "sha256-0rXLtHsYoDyPBCsP44U0dDlOnnjbdY+3eRmnSfkFMIc=",
         "ref": "main",
-        "rev": "aff22eb1ca175092d5055a209269b12c72353d37",
-        "revCount": 133,
+        "rev": "090cb5e39ce35f79f4b656d38b1a38533345a010",
+        "revCount": 134,
         "type": "git",
         "url": "https://git.bytes.zone/brian/elo-anything.git"
       },
@@ -142,6 +151,7 @@
         "bytes-zone": "bytes-zone",
         "comma": "comma",
         "elo-anything": "elo-anything",
+        "flake-utils": "flake-utils",
         "goatcounter": "goatcounter",
         "nixpkgs-release": "nixpkgs-release",
         "nixpkgs-unstable": "nixpkgs-unstable"
