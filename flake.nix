@@ -10,10 +10,9 @@
       flake = false;
     };
 
-    bytes-zone = {
-      url = "git+https://git.bytes.zone/bytes.zone/bytes.zone.git?ref=main";
-      flake = false;
-    };
+    bytes-zone.url =
+      "git+https://git.bytes.zone/bytes.zone/bytes.zone.git?ref=main";
+    bytes-zone.inputs.nixpkgs.follows = "nixpkgs-release";
 
     comma = {
       url = "github:Shopify/comma";
@@ -37,10 +36,9 @@
       pkgs = inputs.nixpkgs-release.legacyPackages.${system};
 
       overlays = [
+        inputs.bytes-zone.overlay.${system}
         (final: prev: {
           bad-datalog = pkgs.callPackage inputs.bad-datalog { };
-
-          bytes-zone = pkgs.callPackage inputs.bytes-zone { };
 
           comma = pkgs.callPackage inputs.comma { };
 
