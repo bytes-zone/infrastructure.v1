@@ -31,5 +31,12 @@
     };
   };
 
-  outputs = inputs: { };
+  outputs = inputs:
+    let overlays = [ ];
+    in {
+      nixosConfigurations.gitea = inputs.nixpkgs-release.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ({ ... }: { nixpkgs.overlays = overlays; }) ];
+      };
+    };
 }
