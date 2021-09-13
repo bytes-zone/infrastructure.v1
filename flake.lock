@@ -1,0 +1,133 @@
+{
+  "nodes": {
+    "bad-datalog": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1623709575,
+        "narHash": "sha256-awizyM8NuMn42EghmFFUndS7rWeRdy+870whZmnprWQ=",
+        "ref": "main",
+        "rev": "2d2b925227260f5eb394a63bb4730058b6f0a4af",
+        "revCount": 316,
+        "type": "git",
+        "url": "https://git.bytes.zone/brian/bad-datalog.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://git.bytes.zone/brian/bad-datalog.git"
+      }
+    },
+    "bytes-zone": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630441069,
+        "narHash": "sha256-WBrtlUKZi05xrxmPEH4cwHXFT9SXqyhkU76ftYMltLc=",
+        "ref": "main",
+        "rev": "5449fb8aa4f9517b06839e5da07326da5978c92d",
+        "revCount": 167,
+        "type": "git",
+        "url": "https://git.bytes.zone/bytes.zone/bytes.zone.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://git.bytes.zone/bytes.zone/bytes.zone.git"
+      }
+    },
+    "comma": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1588170489,
+        "narHash": "sha256-IT7zlcM1Oh4sWeCJ1m4NkteuajPxTnNo1tbitG0eqlg=",
+        "owner": "Shopify",
+        "repo": "comma",
+        "rev": "4a62ec17e20ce0e738a8e5126b4298a73903b468",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Shopify",
+        "repo": "comma",
+        "type": "github"
+      }
+    },
+    "elo-anything": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1621953767,
+        "narHash": "sha256-kNd4oGlmF0/5Fc/n2k87Q62UbC2vcj/EbATt2A3AvHc=",
+        "ref": "main",
+        "rev": "aff22eb1ca175092d5055a209269b12c72353d37",
+        "revCount": 133,
+        "type": "git",
+        "url": "https://git.bytes.zone/brian/elo-anything.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://git.bytes.zone/brian/elo-anything.git"
+      }
+    },
+    "goatcounter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1605021223,
+        "narHash": "sha256-XL16ryJmb0O+rvCP332fFSM0CrxoviBXwUKIwiFjG7Q=",
+        "owner": "zgoat",
+        "repo": "goatcounter",
+        "rev": "9303ec02e214354a6c85e9868cba79e4d9abb818",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zgoat",
+        "ref": "release-1.4",
+        "repo": "goatcounter",
+        "type": "github"
+      }
+    },
+    "nixpkgs-release": {
+      "locked": {
+        "lastModified": 1631562492,
+        "narHash": "sha256-RMXh3Ol04TOdes/gl8GI0Q+8PH7kEeXbHzL0e957/Vc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f789739acc4baf042c85f2f7382f4b0af5c5e049",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-21.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1631525292,
+        "narHash": "sha256-dbaXjviKfSz0L5/x25O6a/X+rqwtJAhSDTZv2XW+U1w=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "65b70fbe4c3a942a266794e28a08147b06ebb6bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "bad-datalog": "bad-datalog",
+        "bytes-zone": "bytes-zone",
+        "comma": "comma",
+        "elo-anything": "elo-anything",
+        "goatcounter": "goatcounter",
+        "nixpkgs-release": "nixpkgs-release",
+        "nixpkgs-unstable": "nixpkgs-unstable"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
