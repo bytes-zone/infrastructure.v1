@@ -19,9 +19,7 @@
     },
     "bytes-zone": {
       "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs-release"
         ]
@@ -59,19 +57,17 @@
     },
     "elo-anything": {
       "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs-release"
         ]
       },
       "locked": {
-        "lastModified": 1631570709,
-        "narHash": "sha256-0rXLtHsYoDyPBCsP44U0dDlOnnjbdY+3eRmnSfkFMIc=",
+        "lastModified": 1631570905,
+        "narHash": "sha256-0TLUJ+QxlfwXevaTYYORhWD/wIHYtia2sbdYmtsSDXA=",
         "ref": "main",
-        "rev": "090cb5e39ce35f79f4b656d38b1a38533345a010",
-        "revCount": 134,
+        "rev": "34ab8e4473c5c4aa3f503fea499c04b553db63a7",
+        "revCount": 135,
         "type": "git",
         "url": "https://git.bytes.zone/brian/elo-anything.git"
       },
@@ -82,6 +78,21 @@
       }
     },
     "flake-utils": {
+      "locked": {
+        "lastModified": 1631561581,
+        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
       "locked": {
         "lastModified": 1631561581,
         "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
@@ -151,7 +162,6 @@
         "bytes-zone": "bytes-zone",
         "comma": "comma",
         "elo-anything": "elo-anything",
-        "flake-utils": "flake-utils",
         "goatcounter": "goatcounter",
         "nixpkgs-release": "nixpkgs-release",
         "nixpkgs-unstable": "nixpkgs-unstable"

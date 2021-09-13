@@ -5,8 +5,6 @@
     nixpkgs-release.url = "github:NixOS/nixpkgs/release-21.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     bad-datalog = {
       url = "git+https://git.bytes.zone/brian/bad-datalog.git?ref=main";
       flake = false;
@@ -15,7 +13,6 @@
     bytes-zone.url =
       "git+https://git.bytes.zone/bytes.zone/bytes.zone.git?ref=main";
     bytes-zone.inputs.nixpkgs.follows = "nixpkgs-release";
-    bytes-zone.inputs.flake-utils.follows = "flake-utils";
 
     comma = {
       url = "github:Shopify/comma";
@@ -25,7 +22,6 @@
     elo-anything.url =
       "git+https://git.bytes.zone/brian/elo-anything.git?ref=main";
     elo-anything.inputs.nixpkgs.follows = "nixpkgs-release";
-    elo-anything.inputs.flake-utils.follows = "flake-utils";
 
     goatcounter = {
       url = "github:zgoat/goatcounter/release-1.4";
