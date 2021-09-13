@@ -1,13 +1,4 @@
-{ pkgs, lib, ... }:
-let
-  sources = import ../nix/sources.nix;
-
-  bad-datalog = pkgs.callPackage sources.bad-datalog { };
-  bytes-zone = pkgs.callPackage sources."bytes.zone" { };
-  comma = pkgs.callPackage sources.comma { };
-  elo-anything = pkgs.callPackage sources.elo-anything { };
-  goatcounter = pkgs.callPackage ../pkgs/goatcounter { };
-in {
+{ pkgs, lib, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
@@ -23,7 +14,7 @@ in {
 
   # utilities
   environment.systemPackages =
-    [ pkgs.kakoune-unwrapped pkgs.goaccess comma goatcounter ];
+    [ pkgs.kakoune-unwrapped pkgs.goaccess pkgs.comma pkgs.goatcounter ];
 
   ## Security Stuff
   networking.firewall.allowedTCPPorts = [
@@ -188,14 +179,14 @@ in {
       forceSSL = true;
       enableACME = true;
 
-      root = "${elo-anything}/share/elo-anything";
+      root = "${pkgs.elo-anything}/share/elo-anything";
     };
 
     virtualHosts."datalog.bytes.zone" = {
       forceSSL = true;
       enableACME = true;
 
-      root = "${bad-datalog}/share/bad-datalog";
+      root = "${pkgs.bad-datalog}/share/bad-datalog";
       extraConfig = ''
         try_files $uri /index.html;
       '';
@@ -205,7 +196,7 @@ in {
       forceSSL = true;
       enableACME = true;
 
-      root = "${bytes-zone}/share/bytes.zone";
+      root = "${pkgs.bytes-zone}/share/bytes.zone";
 
       extraConfig = ''
         add_header Strict-Transport-Security max-age=15768000 always;
@@ -275,7 +266,7 @@ in {
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
 
-    path = [ goatcounter ];
+    path = [ pkgs.goatcounter ];
     preStart =
       "goatcounter migrate -db 'postgres://user=goatcounter dbname=goatcounter host=/run/postgresql'";
     script =

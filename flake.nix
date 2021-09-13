@@ -32,11 +32,38 @@
   };
 
   outputs = inputs:
-    let overlays = [ ];
+    let
+      pkgs = inputs.nixpkgs-release.legacyPackages."x86_64-linux";
+
+      overlays = [
+        (final: prev: {
+          bad-datalog = pkgs.callPackage inputs.bad-datalog { };
+
+          bytes-zone = pkgs.callPackage inputs.bytes-zone { };
+
+          comma = pkgs.callPackage inputs.comma { };
+
+          elo-anything = pkgs.callPackage inputs.elo-anything { };
+
+          goatcounter = pkgs.buildGoModule {
+            pname = "goatcounter";
+            version = inputs.goatcounter.rev;
+            src = inputs.goatcounter;
+
+            subPackages = [ "cmd/goatcounter" ];
+
+            vendorSha256 =
+              "0zd994rccrsmg54jygd3spqzk4ahcqyffzpzqgjiw939hlbxvb6s";
+
+            doCheck = false;
+          };
+        })
+      ];
     in {
       nixosConfigurations.gitea = inputs.nixpkgs-release.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ ({ ... }: { nixpkgs.overlays = overlays; }) ];
+        modules =
+          [ ({ ... }: { nixpkgs.overlays = overlays; }) ./machines/gitea ];
       };
     };
 }

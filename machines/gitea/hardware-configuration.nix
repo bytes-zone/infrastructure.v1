@@ -1,5 +1,5 @@
-{ ... }: {
-  imports = [ <nixpkgs/nixos/modules/profiles/qemu-guest.nix> ];
+{ pkgs, modulesPath, ... }: {
+  imports = [ "${modulesPath}/profiles/qemu-guest.nix" ];
   boot.loader.grub.device = "/dev/vda";
   fileSystems = {
     "/" = {
