@@ -33,7 +33,8 @@
 
   outputs = inputs:
     let
-      pkgs = inputs.nixpkgs-release.legacyPackages."x86_64-linux";
+      system = "x86_64-linux";
+      pkgs = inputs.nixpkgs-release.legacyPackages.${system};
 
       overlays = [
         (final: prev: {
@@ -61,7 +62,8 @@
       ];
     in {
       nixosConfigurations.gitea = inputs.nixpkgs-release.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
+
         modules =
           [ ({ ... }: { nixpkgs.overlays = overlays; }) ./machines/gitea ];
       };
