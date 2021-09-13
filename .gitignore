@@ -1,6 +1,5 @@
-/gitea/backups-*.key
-/gitea/report.html
-/gitea/result
-/result
+/machines/gitea/backups-*.key
+/machines/gitea/report.html
 /terraform/.terraform/
 /terraform/terraform.tfvars
+result
