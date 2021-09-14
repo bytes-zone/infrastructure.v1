@@ -1,5 +1,4 @@
-#!/usr/bin/env nix-shell
-#!nix-shell -i bash -p nixUnstable
+#!/usr/bin/env bash
 set -euo pipefail
 
 SYSTEM="${1:-}"
@@ -9,4 +8,4 @@ if test -z "$SYSTEM"; then
   exit 1
 fi
 
-nix build --experimental-features "nix-command flakes" ".#nixosConfigurations.${SYSTEM}.config.system.build.toplevel"
+nix build ".#nixosConfigurations.${SYSTEM}.config.system.build.toplevel"
