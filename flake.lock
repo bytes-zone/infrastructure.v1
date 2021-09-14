@@ -68,11 +68,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1631570905,
-        "narHash": "sha256-0TLUJ+QxlfwXevaTYYORhWD/wIHYtia2sbdYmtsSDXA=",
+        "lastModified": 1631623581,
+        "narHash": "sha256-xQKx1u+f1oB21WFUZL4+YsqsmIz8lZ6XxINpLfKmZnk=",
         "ref": "main",
-        "rev": "34ab8e4473c5c4aa3f503fea499c04b553db63a7",
-        "revCount": 135,
+        "rev": "e0822f1208d85f48b458f1cb13c73987973cdddb",
+        "revCount": 136,
         "type": "git",
         "url": "https://git.bytes.zone/brian/elo-anything.git"
       },
