@@ -30,36 +30,37 @@
 
   outputs = inputs:
     let
-      system = "x86_64-linux";
-      pkgs = inputs.nixpkgs-release.legacyPackages.${system};
+      mkOverlays = system:
+        let pkgs = inputs.nixpkgs-release.legacyPackages.${system};
+        in [
+          inputs.bad-datalog.overlay.${system}
+          inputs.bytes-zone.overlay.${system}
+          inputs.elo-anything.overlay.${system}
+          (final: prev: {
+            comma = pkgs.callPackage inputs.comma { };
 
-      overlays = [
-        inputs.bad-datalog.overlay.${system}
-        inputs.bytes-zone.overlay.${system}
-        inputs.elo-anything.overlay.${system}
-        (final: prev: {
-          comma = pkgs.callPackage inputs.comma { };
+            goatcounter = pkgs.buildGoModule {
+              pname = "goatcounter";
+              version = inputs.goatcounter.rev;
+              src = inputs.goatcounter;
 
-          goatcounter = pkgs.buildGoModule {
-            pname = "goatcounter";
-            version = inputs.goatcounter.rev;
-            src = inputs.goatcounter;
+              subPackages = [ "cmd/goatcounter" ];
 
-            subPackages = [ "cmd/goatcounter" ];
+              vendorSha256 =
+                "0zd994rccrsmg54jygd3spqzk4ahcqyffzpzqgjiw939hlbxvb6s";
 
-            vendorSha256 =
-              "0zd994rccrsmg54jygd3spqzk4ahcqyffzpzqgjiw939hlbxvb6s";
-
-            doCheck = false;
-          };
-        })
-      ];
+              doCheck = false;
+            };
+          })
+        ];
     in {
-      nixosConfigurations.gitea = inputs.nixpkgs-release.lib.nixosSystem {
-        inherit system;
+      nixosConfigurations.gitea = inputs.nixpkgs-release.lib.nixosSystem rec {
+        system = "x86_64-linux";
 
-        modules =
-          [ ({ ... }: { nixpkgs.overlays = overlays; }) ./machines/gitea ];
+        modules = [
+          ({ ... }: { nixpkgs.overlays = mkOverlays system; })
+          ./machines/gitea
+        ];
       };
     };
 }
