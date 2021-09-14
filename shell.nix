@@ -1,10 +1,3 @@
-{ ... }:
-let
-  sources = import ./nix/sources.nix;
-  nixpkgs = import sources.nixpkgs { };
-  niv = import sources.niv { };
-in with nixpkgs;
-stdenv.mkDerivation {
-  name = "gitea-experiment";
-  buildInputs = [ niv.niv git terraform graphviz ];
-}
+(import (fetchTarball https://github.com/edolstra/flake-compat/archive/master.tar.gz) {
+  src = builtins.fetchGit ./.;
+}).shellNix
