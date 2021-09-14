@@ -68,7 +68,14 @@
         in {
           name = system;
           value = pkgs.mkShell {
-            buildInputs = with pkgs; [ git terraform graphviz nixFlakes ];
+            buildInputs = with pkgs; [
+              git
+              terraform
+              graphviz
+              (pkgs.writeShellScriptBin "nix" ''
+                exec ${pkgs.nixUnstable}/bin/nix --experimental-features "nix-command flakes" "$@"
+              '')
+            ];
           };
         }) [ "x86_64-linux" "x86_64-darwin" ]);
     };
