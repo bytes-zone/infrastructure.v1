@@ -5,10 +5,9 @@
     nixpkgs-release.url = "github:NixOS/nixpkgs/release-21.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    bad-datalog = {
-      url = "git+https://git.bytes.zone/brian/bad-datalog.git?ref=main";
-      flake = false;
-    };
+    bad-datalog.url =
+      "git+https://git.bytes.zone/brian/bad-datalog.git?ref=main";
+    bad-datalog.inputs.nixpkgs.follows = "nixpkgs-release";
 
     bytes-zone.url =
       "git+https://git.bytes.zone/bytes.zone/bytes.zone.git?ref=main";
@@ -35,11 +34,10 @@
       pkgs = inputs.nixpkgs-release.legacyPackages.${system};
 
       overlays = [
+        inputs.bad-datalog.overlay.${system}
         inputs.bytes-zone.overlay.${system}
         inputs.elo-anything.overlay.${system}
         (final: prev: {
-          bad-datalog = pkgs.callPackage inputs.bad-datalog { };
-
           comma = pkgs.callPackage inputs.comma { };
 
           goatcounter = pkgs.buildGoModule {

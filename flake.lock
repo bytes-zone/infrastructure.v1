@@ -1,13 +1,18 @@
 {
   "nodes": {
     "bad-datalog": {
-      "flake": false,
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs-release"
+        ]
+      },
       "locked": {
-        "lastModified": 1623709575,
-        "narHash": "sha256-awizyM8NuMn42EghmFFUndS7rWeRdy+870whZmnprWQ=",
+        "lastModified": 1631615263,
+        "narHash": "sha256-UXaD4Tvcp18VQGLDKhDVKbJ3q8X/PNuxYbhCIyX0o3Q=",
         "ref": "main",
-        "rev": "2d2b925227260f5eb394a63bb4730058b6f0a4af",
-        "revCount": 316,
+        "rev": "4f55a607d42437ac6a331e52d710c9660738bdce",
+        "revCount": 320,
         "type": "git",
         "url": "https://git.bytes.zone/brian/bad-datalog.git"
       },
@@ -19,7 +24,7 @@
     },
     "bytes-zone": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs-release"
         ]
@@ -57,7 +62,7 @@
     },
     "elo-anything": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs-release"
         ]
@@ -93,6 +98,21 @@
       }
     },
     "flake-utils_2": {
+      "locked": {
+        "lastModified": 1631561581,
+        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
       "locked": {
         "lastModified": 1631561581,
         "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
