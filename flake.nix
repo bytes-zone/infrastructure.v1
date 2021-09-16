@@ -75,6 +75,7 @@
               (pkgs.writeShellScriptBin "nix" ''
                 exec ${pkgs.nixUnstable}/bin/nix --experimental-features "nix-command flakes" "$@"
               '')
+              borgbackup
             ];
           };
         }) [ "x86_64-linux" "x86_64-darwin" ]);
