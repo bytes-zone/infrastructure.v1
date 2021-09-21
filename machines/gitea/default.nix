@@ -13,8 +13,13 @@
   ];
 
   # utilities
-  environment.systemPackages =
-    [ pkgs.kakoune-unwrapped pkgs.goaccess pkgs.comma pkgs.goatcounter ];
+  environment.systemPackages = [
+    pkgs.comma
+    pkgs.goaccess
+    pkgs.goatcounter
+    pkgs.kakoune-unwrapped
+    pkgs.sysz
+  ];
 
   ## Security Stuff
   networking.firewall.allowedTCPPorts = [

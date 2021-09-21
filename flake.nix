@@ -26,6 +26,11 @@
       url = "github:zgoat/goatcounter/release-1.4";
       flake = false;
     };
+
+    sysz = {
+      url = "github:joehillen/sysz";
+      flake = false;
+    };
   };
 
   outputs = inputs:
@@ -50,6 +55,22 @@
                 "0zd994rccrsmg54jygd3spqzk4ahcqyffzpzqgjiw939hlbxvb6s";
 
               doCheck = false;
+            };
+
+            sysz = final.stdenv.mkDerivation {
+              name = "sysz";
+              src = inputs.sysz;
+
+              buildPhase = "true";
+              buildInputs = [ final.makeWrapper ];
+              installPhase = ''
+                mkdir -p $out/bin
+                install -m755 sysz $out/bin
+
+                wrapProgram $out/bin/sysz --prefix PATH : ${
+                  final.lib.makeBinPath [ final.fzf ]
+                }
+              '';
             };
           })
         ];
