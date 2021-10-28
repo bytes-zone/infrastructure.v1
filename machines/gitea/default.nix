@@ -230,8 +230,8 @@
     };
 
     virtualHosts."stats.kofi.sexy" = {
-      enableACME = false;
-      forceSSL = false;
+      enableACME = true;
+      forceSSL = true;
 
       locations."/".proxyPass = "http://localhost:8082";
     };
