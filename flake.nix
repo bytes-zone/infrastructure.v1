@@ -2,7 +2,7 @@
   description = "bytes.zone infrastructure";
 
   inputs = {
-    nixpkgs-release.url = "github:NixOS/nixpkgs/release-21.05";
+    nixpkgs-release.url = "github:NixOS/nixpkgs/release-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     bad-datalog.url =
