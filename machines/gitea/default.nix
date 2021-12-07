@@ -269,7 +269,7 @@
   users.groups.goatcounter = { };
   users.users.goatcounter = {
     isSystemUser = true;
-    extraGroups = [ "goatcounter" ];
+    group = "goatcounter";
   };
 
   systemd.services.goatcounter = {
