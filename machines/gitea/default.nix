@@ -54,7 +54,7 @@
 
     # I could have done all this by hand, but I didn't have to because Nixos is
     # nice. ❤️
-    ensureDatabases = [ "gitea" "goatcounter" "goatcounter_kofi" ];
+    ensureDatabases = [ "gitea" "goatcounter" ];
     ensureUsers = [
       {
         name = "gitea";
@@ -62,10 +62,7 @@
       }
       {
         name = "goatcounter";
-        ensurePermissions = {
-          "DATABASE goatcounter" = "ALL PRIVILEGES";
-          "DATABASE goatcounter_kofi" = "ALL PRIVILEGES";
-        };
+        ensurePermissions = { "DATABASE goatcounter" = "ALL PRIVILEGES"; };
       }
     ];
   };
@@ -228,13 +225,6 @@
 
       locations."/".proxyPass = "http://localhost:8081";
     };
-
-    virtualHosts."stats.kofi.sexy" = {
-      enableACME = true;
-      forceSSL = true;
-
-      locations."/".proxyPass = "http://localhost:8082";
-    };
   };
 
   security.acme = {
@@ -286,28 +276,6 @@
       "goatcounter migrate -db 'postgres://user=goatcounter dbname=goatcounter host=/run/postgresql'";
     script =
       "goatcounter serve -db 'postgres://user=goatcounter dbname=goatcounter host=/run/postgresql' -listen localhost:8081 -tls none";
-
-    serviceConfig = {
-      User = "goatcounter";
-      Group = "goatcounter";
-    };
-  };
-
-  ## goatcounter for Kofi
-  systemd.services.goatcounter_kofi = {
-    description = "Privacy-preserving web analytics";
-    documentation = [ "https://github.com/zgoat/goatcounter" ];
-
-    enable = true;
-
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-
-    path = [ pkgs.goatcounter ];
-    preStart =
-      "goatcounter migrate -db 'postgres://user=goatcounter dbname=goatcounter_kofi host=/run/postgresql'";
-    script =
-      "goatcounter serve -db 'postgres://user=goatcounter dbname=goatcounter_kofi host=/run/postgresql' -listen localhost:8082 -tls none";
 
     serviceConfig = {
       User = "goatcounter";
