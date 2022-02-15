@@ -8,4 +8,4 @@ if test -z "$SYSTEM"; then
   exit 1
 fi
 
-nix build ".#nixosConfigurations.${SYSTEM}.config.system.build.toplevel"
+nix --extra-experimental-features "nix-command flakes" build --print-build-logs ".#nixosConfigurations.${SYSTEM}.config.system.build.toplevel"
