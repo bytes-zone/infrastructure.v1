@@ -167,11 +167,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1645530900,
-        "narHash": "sha256-71MkBqEbsRfgPtSHm5EFP0NW60kE8r56MiiYeaaRdu0=",
+        "lastModified": 1645532629,
+        "narHash": "sha256-2/sANJmxssvbDdRSKW6OKUloJtxUSSFpgJ1B48o7qhQ=",
         "ref": "main",
-        "rev": "d8ffaacc7130d636bed20eb924400ce0d43216bb",
-        "revCount": 125,
+        "rev": "b68b76cbbaeef8ac4f0fbf32517d9263058c3642",
+        "revCount": 126,
         "type": "git",
         "url": "https://git.bytes.zone/brian/nates-mazes.git"
       },
