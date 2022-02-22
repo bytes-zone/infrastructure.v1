@@ -27,6 +27,10 @@
       flake = false;
     };
 
+    nates-mazes.url =
+      "git+https://git.bytes.zone/brian/nates-mazes.git?ref=main";
+    nates-mazes.inputs.nixpkgs.follows = "nixpkgs-release";
+
     sysz = {
       url = "github:joehillen/sysz";
       flake = false;
@@ -41,6 +45,7 @@
           inputs.bad-datalog.overlay.${system}
           inputs.bytes-zone.overlay.${system}
           inputs.elo-anything.overlay.${system}
+          inputs.nates-mazes.overlay.${system}
           (final: prev: {
             comma = pkgs.callPackage inputs.comma { };
 

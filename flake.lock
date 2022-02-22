@@ -127,6 +127,21 @@
         "type": "github"
       }
     },
+    "flake-utils_4": {
+      "locked": {
+        "lastModified": 1644229661,
+        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "goatcounter": {
       "flake": false,
       "locked": {
@@ -142,6 +157,28 @@
         "ref": "release-1.4",
         "repo": "goatcounter",
         "type": "github"
+      }
+    },
+    "nates-mazes": {
+      "inputs": {
+        "flake-utils": "flake-utils_4",
+        "nixpkgs": [
+          "nixpkgs-release"
+        ]
+      },
+      "locked": {
+        "lastModified": 1645530900,
+        "narHash": "sha256-71MkBqEbsRfgPtSHm5EFP0NW60kE8r56MiiYeaaRdu0=",
+        "ref": "main",
+        "rev": "d8ffaacc7130d636bed20eb924400ce0d43216bb",
+        "revCount": 125,
+        "type": "git",
+        "url": "https://git.bytes.zone/brian/nates-mazes.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://git.bytes.zone/brian/nates-mazes.git"
       }
     },
     "nixpkgs-release": {
@@ -183,6 +220,7 @@
         "comma": "comma",
         "elo-anything": "elo-anything",
         "goatcounter": "goatcounter",
+        "nates-mazes": "nates-mazes",
         "nixpkgs-release": "nixpkgs-release",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sysz": "sysz"
