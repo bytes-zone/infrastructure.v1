@@ -197,6 +197,16 @@
       '';
     };
 
+    virtualHosts."mazes.bytes.zone" = {
+      forceSSL = true;
+      enableACME = true;
+
+      root = "${pkgs.nates-mazes}/share/nates-mazes";
+      extraConfig = ''
+        try_files $uri /index.html;
+      '';
+    };
+
     virtualHosts."bytes.zone" = {
       forceSSL = true;
       enableACME = true;
