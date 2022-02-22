@@ -141,6 +141,15 @@ resource "cloudflare_record" "stats_bytes_zone" {
   proxied = false
 }
 
+resource "cloudflare_record" "mazes_bytes_zone" {
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
+  name    = "mazes"
+  type    = "A"
+  value   = digitalocean_droplet.gitea.ipv4_address
+  ttl     = 1 # automatic
+  proxied = false
+}
+
 # SSL
 
 resource "cloudflare_record" "git_bytes_zone_caa" {
