@@ -47,11 +47,11 @@
     "comma": {
       "flake": false,
       "locked": {
-        "lastModified": 1645081562,
-        "narHash": "sha256-iSkHFMgYh31UDFZ5BZ9AHBivdgO0n2iCrYKjwAWxXvY=",
+        "lastModified": 1647930348,
+        "narHash": "sha256-fqPbeLXrSM3n4bqrfbqheJH/taHNHY4YG3VBpqzh8OU=",
         "owner": "Shopify",
         "repo": "comma",
-        "rev": "54149dc417819af14ddc0d59216d4add5280ad14",
+        "rev": "cb27b68ca7ded6f3c4a88d801b13dc6592f8a3f2",
         "type": "github"
       },
       "original": {
