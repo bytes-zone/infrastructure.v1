@@ -8,6 +8,7 @@ if test -z "$SYSTEM"; then
   exit 1
 fi
 
+set -x
 # https://blog.nixbuild.net/posts/2022-03-16-lightning-fast-ci-with-nixbuild-net.html
 nix --extra-experimental-features "nix-command flakes" \
     build \

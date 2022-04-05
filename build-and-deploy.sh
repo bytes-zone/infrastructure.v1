@@ -9,5 +9,6 @@ if test -z "$BUILD_TARGET" || test -z "$DEPLOY_TARGET"; then
   exit 1
 fi
 
+set -x
 ./build.sh "$BUILD_TARGET"
 ./deploy.sh "$DEPLOY_TARGET" result
