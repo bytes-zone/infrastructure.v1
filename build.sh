@@ -9,7 +9,11 @@ if test -z "$SYSTEM"; then
 fi
 
 set -x
+# TODO: it'd be really cool to use
 # https://blog.nixbuild.net/posts/2022-03-16-lightning-fast-ci-with-nixbuild-net.html
+# eventually, but for now it's giving me some trouble copying the built closure
+# after the build, so we can't actually do the deploy. It'll probably get stabler
+# in the future, and I should try again then.
 nix --extra-experimental-features "nix-command flakes" \
     build \
     --print-build-logs \
