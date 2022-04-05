@@ -13,6 +13,4 @@ set -x
 nix --extra-experimental-features "nix-command flakes" \
     build \
     --print-build-logs \
-    --eval-store auto \
-    --store ssh-ng://eu.nixbuild.net \
     ".#nixosConfigurations.${SYSTEM}.config.system.build.toplevel"
