@@ -89,21 +89,23 @@
         ];
       };
 
-      devShell = builtins.listToAttrs (map (system:
+      devShells = builtins.listToAttrs (map (system:
         let pkgs = inputs.nixpkgs-release.legacyPackages.${system};
         in {
           name = system;
-          value = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              git
-              terraform
-              graphviz
-              (pkgs.writeShellScriptBin "nix" ''
-                exec ${pkgs.nixUnstable}/bin/nix --experimental-features "nix-command flakes" "$@"
-              '')
-              borgbackup
-            ];
+          value = {
+            default = pkgs.mkShell {
+              buildInputs = with pkgs; [
+                git
+                terraform
+                graphviz
+                (pkgs.writeShellScriptBin "nix" ''
+                  exec ${pkgs.nixUnstable}/bin/nix --experimental-features "nix-command flakes" "$@"
+                '')
+                borgbackup
+              ];
+            };
           };
-        }) [ "x86_64-linux" "x86_64-darwin" ]);
+        }) [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ]);
     };
 }
