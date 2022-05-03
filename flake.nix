@@ -39,7 +39,7 @@
   outputs = inputs:
     let
       mkOverlays = system:
-        let pkgs = inputs.nixpkgs-release.legacyPackages.${system};
+        let pkgs = import inputs.nixpkgs-release { inherit system; };
         in [
           inputs.bad-datalog.overlay.${system}
           inputs.bytes-zone.overlay.${system}
@@ -89,7 +89,7 @@
       };
 
       devShells = builtins.listToAttrs (map (system:
-        let pkgs = inputs.nixpkgs-release.legacyPackages.${system};
+        let pkgs = import inputs.nixpkgs-release { inherit system; };
         in {
           name = system;
           value = {
