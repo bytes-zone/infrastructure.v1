@@ -94,15 +94,7 @@
           name = system;
           value = {
             default = pkgs.mkShell {
-              buildInputs = with pkgs; [
-                git
-                terraform
-                graphviz
-                (pkgs.writeShellScriptBin "nix" ''
-                  exec ${pkgs.nixUnstable}/bin/nix --experimental-features "nix-command flakes" "$@"
-                '')
-                borgbackup
-              ];
+              buildInputs = with pkgs; [ git terraform graphviz borgbackup ];
             };
           };
         }) [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ]);
