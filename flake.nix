@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs-release.url = "github:NixOS/nixpkgs/release-21.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     bad-datalog.url =
       "git+https://git.bytes.zone/brian/bad-datalog.git?ref=main";
