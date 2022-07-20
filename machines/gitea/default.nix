@@ -4,6 +4,8 @@
     ./networking.nix # generated at runtime by nixos-infect
   ];
 
+  system.stateVersion = "19.09";
+
   boot.cleanTmpDir = true;
   networking.hostName = "gitea";
   networking.firewall.allowPing = true;
@@ -69,8 +71,9 @@
 
   ## Redis
   # used for gitea sessions and cache. That's why there are only two databases!
-  services.redis = {
+  services.redis.servers.ephemeral = {
     enable = true;
+    port = 6379;
     databases = 2;
   };
 
@@ -238,8 +241,8 @@
   };
 
   security.acme = {
-    email = "brian@brianthicks.com";
     acceptTerms = true;
+    defaults.email = "brian@brianthicks.com";
   };
 
   ## backups

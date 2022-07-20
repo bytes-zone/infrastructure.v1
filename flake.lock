@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1631571176,
-        "narHash": "sha256-9NuhhTJFC3ag5Gxlcma558h7Eu5CDGsCoIimZrF9ccA=",
+        "lastModified": 1658279418,
+        "narHash": "sha256-23+o3d17zLtsZnrUWu6UjYp3nhrARpVWL5UaTuowSiU=",
         "ref": "main",
-        "rev": "50baf4c6b8a2291525a76748dba908873bdfdd95",
-        "revCount": 170,
+        "rev": "7eb6eb54b7db4e64b35a6490fee628795f61241b",
+        "revCount": 171,
         "type": "git",
         "url": "https://git.bytes.zone/bytes.zone/bytes.zone.git"
       },
@@ -42,29 +42,6 @@
         "ref": "main",
         "type": "git",
         "url": "https://git.bytes.zone/bytes.zone/bytes.zone.git"
-      }
-    },
-    "comma": {
-      "inputs": {
-        "flake-compat": "flake-compat",
-        "naersk": "naersk",
-        "nixpkgs": [
-          "nixpkgs-release"
-        ],
-        "utils": "utils"
-      },
-      "locked": {
-        "lastModified": 1656104701,
-        "narHash": "sha256-XulD3y2wTN6gwoOmdUnUj7euFQ6lMB9+LEvbj2QSGEw=",
-        "owner": "nix-community",
-        "repo": "comma",
-        "rev": "af2f2904f165f7bb56f0baca7135e75923c2bc1a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "comma",
-        "type": "github"
       }
     },
     "elo-anything": {
@@ -89,22 +66,6 @@
         "url": "https://git.bytes.zone/brian/elo-anything.git"
       }
     },
-    "flake-compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1650374568,
-        "narHash": "sha256-Z+s0J8/r907g149rllvwhb4pKi8Wam5ij0st8PwAh+E=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "b4a34015c698c7793d592d66adbab377907a2be8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "locked": {
         "lastModified": 1631561581,
@@ -122,11 +83,11 @@
     },
     "flake-utils_2": {
       "locked": {
-        "lastModified": 1631561581,
-        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
+        "lastModified": 1656928814,
+        "narHash": "sha256-RIFfgBuKz6Hp89yRr7+NR5tzIAbn52h8vT6vXkYjZoM=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
+        "rev": "7e2a3b3dfd9af950a856d66b0a7d01e3c18aa249",
         "type": "github"
       },
       "original": {
@@ -182,28 +143,6 @@
         "type": "github"
       }
     },
-    "naersk": {
-      "inputs": {
-        "nixpkgs": [
-          "comma",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1653413650,
-        "narHash": "sha256-wojDHjb+eU80MPH+3HQaK0liUy8EgR95rvmCl24i58Y=",
-        "owner": "nix-community",
-        "repo": "naersk",
-        "rev": "69daaceebe12c070cd5ae69ba38f277bbf033695",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "master",
-        "repo": "naersk",
-        "type": "github"
-      }
-    },
     "nates-mazes": {
       "inputs": {
         "flake-utils": "flake-utils_4",
@@ -228,16 +167,16 @@
     },
     "nixpkgs-release": {
       "locked": {
-        "lastModified": 1656492155,
-        "narHash": "sha256-oKWpYhhgZ2Yt4BZHKSFwJSwOAoFawWxNiW0y7wpde+I=",
+        "lastModified": 1658275341,
+        "narHash": "sha256-VGDeAzyFMvOjAF0JRm2enAJsjgj8SFsxBLFqd8bi9DE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7a5ca644cc5e96336e7717aca871f01320c2df09",
+        "rev": "08d1e151e41ec04fc051278435a26dd09be06747",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "release-21.11",
+        "ref": "release-22.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -246,7 +185,6 @@
       "inputs": {
         "bad-datalog": "bad-datalog",
         "bytes-zone": "bytes-zone",
-        "comma": "comma",
         "elo-anything": "elo-anything",
         "goatcounter": "goatcounter",
         "nates-mazes": "nates-mazes",
@@ -267,21 +205,6 @@
       "original": {
         "owner": "joehillen",
         "repo": "sysz",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1653893745,
-        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }

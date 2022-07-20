@@ -2,7 +2,7 @@
   description = "bytes.zone infrastructure";
 
   inputs = {
-    nixpkgs-release.url = "github:NixOS/nixpkgs/release-21.11";
+    nixpkgs-release.url = "github:NixOS/nixpkgs/release-22.05";
 
     bad-datalog.url =
       "git+https://git.bytes.zone/brian/bad-datalog.git?ref=main";
@@ -11,9 +11,6 @@
     bytes-zone.url =
       "git+https://git.bytes.zone/bytes.zone/bytes.zone.git?ref=main";
     bytes-zone.inputs.nixpkgs.follows = "nixpkgs-release";
-
-    comma.url = "github:nix-community/comma";
-    comma.inputs.nixpkgs.follows = "nixpkgs-release";
 
     elo-anything.url =
       "git+https://git.bytes.zone/brian/elo-anything.git?ref=main";
@@ -44,8 +41,6 @@
           inputs.elo-anything.overlay.${system}
           inputs.nates-mazes.overlay.${system}
           (final: prev: {
-            comma = inputs.comma.packages.${system}.default;
-
             goatcounter = pkgs.buildGoModule {
               pname = "goatcounter";
               version = inputs.goatcounter.rev;
