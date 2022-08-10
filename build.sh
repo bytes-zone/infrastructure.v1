@@ -9,7 +9,6 @@ if test -z "$SYSTEM"; then
 fi
 
 # https://blog.nixbuild.net/posts/2022-03-16-lightning-fast-ci-with-nixbuild-net.html
-set -x
 OUTPUT="$(
   nix --extra-experimental-features "nix-command flakes" \
       build \
