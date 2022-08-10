@@ -22,6 +22,5 @@ OUTPUT="$(
 
 OUT="$(jq -r '.[0]'.outputs.out <<< "$OUTPUT")"
 
-nix-copy-closure --from eu.nixbuild.net "$OUT"
-if test -h result; then rm result; fi
-ln -s "$OUT" result
+nix-copy-closure --use-substitutes --from eu.nixbuild.net "$OUT"
+echo "$OUT"

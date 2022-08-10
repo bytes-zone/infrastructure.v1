@@ -10,5 +10,5 @@ if test -z "$BUILD_TARGET" || test -z "$DEPLOY_TARGET"; then
 fi
 
 set -x
-./build.sh "$BUILD_TARGET"
-./deploy.sh "$DEPLOY_TARGET" result
+STORE_PATH="$(./build.sh "$BUILD_TARGET")"
+./deploy.sh "$DEPLOY_TARGET" "$STORE_PATH"
