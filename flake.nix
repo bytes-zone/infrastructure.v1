@@ -89,7 +89,7 @@
             default = pkgs.mkShell {
               buildInputs = with pkgs; [
                 git
-                terraform_0_14
+                terraform_0_15
                 graphviz
                 borgbackup
               ];
