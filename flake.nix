@@ -87,7 +87,12 @@
           name = system;
           value = {
             default = pkgs.mkShell {
-              buildInputs = with pkgs; [ git terraform graphviz borgbackup ];
+              buildInputs = with pkgs; [
+                git
+                terraform_0_13
+                graphviz
+                borgbackup
+              ];
             };
           };
         }) [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ]);

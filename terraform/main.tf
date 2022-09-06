@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 0.12"
+  required_version = "~> 0.13"
 
   backend "remote" {
     organization = "brianhicks"
@@ -14,7 +14,7 @@ terraform {
 variable "digitalocean_token" {}
 
 provider "digitalocean" {
-  version = "1.14.0"
+  version = "~> 2.22"
 
   token = var.digitalocean_token
 }
@@ -22,7 +22,7 @@ provider "digitalocean" {
 variable "cloudflare_token" {}
 
 provider "cloudflare" {
-  version = "~> 2.0"
+  version = "~> 3.22"
 
   api_token = var.cloudflare_token
 }
@@ -158,7 +158,7 @@ resource "cloudflare_record" "git_bytes_zone_caa" {
   type    = "CAA"
   ttl     = 1 # automatic
 
-  data = {
+  data {
     flags = 0
     tag   = "issue"
     value = "letsencrypt.org"
