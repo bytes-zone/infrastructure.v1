@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 0.13"
+  required_version = "~> 0.14"
 
   backend "remote" {
     organization = "brianhicks"
@@ -14,16 +14,12 @@ terraform {
 variable "digitalocean_token" {}
 
 provider "digitalocean" {
-  version = "~> 2.22"
-
   token = var.digitalocean_token
 }
 
 variable "cloudflare_token" {}
 
 provider "cloudflare" {
-  version = "~> 3.22"
-
   api_token = var.cloudflare_token
 }
 
