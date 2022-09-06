@@ -4,7 +4,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs-release"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -26,7 +26,7 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
-          "nixpkgs-release"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -48,7 +48,7 @@
       "inputs": {
         "flake-utils": "flake-utils_3",
         "nixpkgs": [
-          "nixpkgs-release"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -147,7 +147,7 @@
       "inputs": {
         "flake-utils": "flake-utils_4",
         "nixpkgs": [
-          "nixpkgs-release"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -165,7 +165,7 @@
         "url": "https://git.bytes.zone/brian/nates-mazes.git"
       }
     },
-    "nixpkgs-release": {
+    "nixpkgs": {
       "locked": {
         "lastModified": 1662494299,
         "narHash": "sha256-1fp6BgIvuu8nLMVjAUIfaQ5DGRVoknF1/zDr2qB2p9A=",
@@ -188,7 +188,7 @@
         "elo-anything": "elo-anything",
         "goatcounter": "goatcounter",
         "nates-mazes": "nates-mazes",
-        "nixpkgs-release": "nixpkgs-release",
+        "nixpkgs": "nixpkgs",
         "sysz": "sysz"
       }
     },

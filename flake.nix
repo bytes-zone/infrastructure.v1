@@ -2,19 +2,19 @@
   description = "bytes.zone infrastructure";
 
   inputs = {
-    nixpkgs-release.url = "github:NixOS/nixpkgs/release-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-22.05";
 
     bad-datalog.url =
       "git+https://git.bytes.zone/brian/bad-datalog.git?ref=main";
-    bad-datalog.inputs.nixpkgs.follows = "nixpkgs-release";
+    bad-datalog.inputs.nixpkgs.follows = "nixpkgs";
 
     bytes-zone.url =
       "git+https://git.bytes.zone/bytes.zone/bytes.zone.git?ref=main";
-    bytes-zone.inputs.nixpkgs.follows = "nixpkgs-release";
+    bytes-zone.inputs.nixpkgs.follows = "nixpkgs";
 
     elo-anything.url =
       "git+https://git.bytes.zone/brian/elo-anything.git?ref=main";
-    elo-anything.inputs.nixpkgs.follows = "nixpkgs-release";
+    elo-anything.inputs.nixpkgs.follows = "nixpkgs";
 
     goatcounter = {
       url = "github:zgoat/goatcounter/release-1.4";
@@ -23,7 +23,7 @@
 
     nates-mazes.url =
       "git+https://git.bytes.zone/brian/nates-mazes.git?ref=main";
-    nates-mazes.inputs.nixpkgs.follows = "nixpkgs-release";
+    nates-mazes.inputs.nixpkgs.follows = "nixpkgs";
 
     sysz = {
       url = "github:joehillen/sysz";
@@ -34,7 +34,7 @@
   outputs = inputs:
     let
       mkOverlays = system:
-        let pkgs = import inputs.nixpkgs-release { inherit system; };
+        let pkgs = import inputs.nixpkgs { inherit system; };
         in [
           inputs.bad-datalog.overlay.${system}
           inputs.bytes-zone.overlay.${system}
@@ -72,7 +72,7 @@
           })
         ];
     in {
-      nixosConfigurations.gitea = inputs.nixpkgs-release.lib.nixosSystem rec {
+      nixosConfigurations.gitea = inputs.nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
 
         modules = [
@@ -82,7 +82,7 @@
       };
 
       devShells = builtins.listToAttrs (map (system:
-        let pkgs = import inputs.nixpkgs-release { inherit system; };
+        let pkgs = import inputs.nixpkgs { inherit system; };
         in {
           name = system;
           value = {
