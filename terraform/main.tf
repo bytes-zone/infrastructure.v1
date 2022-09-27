@@ -146,6 +146,61 @@ resource "cloudflare_record" "mazes_bytes_zone" {
   proxied = false
 }
 
+# email
+
+resource "cloudflare_record" "mx_10_bytes_zone" {
+  zone_id  = data.cloudflare_zones.bytes_zone.zones[0].id
+  name     = "@"
+  type     = "MX"
+  value    = "in1-smtp.messagingengine.com"
+  priority = 10
+  ttl      = 1 # automatic
+}
+
+resource "cloudflare_record" "mx_20_bytes_zone" {
+  zone_id  = data.cloudflare_zones.bytes_zone.zones[0].id
+  name     = "@"
+  type     = "MX"
+  value    = "in2-smtp.messagingengine.com"
+  priority = 20
+  ttl      = 1 # automatic
+}
+
+resource "cloudflare_record" "fm1_domainkey_bytes_zone" {
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
+  type    = "CNAME"
+  name    = "fm1._domainkey"
+  value   = "fm1.bytes.zone.dkim.fmhosted.com"
+  ttl     = 1 # automatic
+  proxied = false
+}
+
+resource "cloudflare_record" "fm2_domainkey_bytes_zone" {
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
+  type    = "CNAME"
+  name    = "fm2._domainkey"
+  value   = "fm2.bytes.zone.dkim.fmhosted.com"
+  ttl     = 1 # automatic
+  proxied = false
+}
+
+resource "cloudflare_record" "fm3_domainkey_bytes_zone" {
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
+  type    = "CNAME"
+  name    = "fm3._domainkey"
+  value   = "fm3.bytes.zone.dkim.fmhosted.com"
+  ttl     = 1 # automatic
+  proxied = false
+}
+
+resource "cloudflare_record" "spf_bytes_zone" {
+  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
+  name    = "@"
+  type    = "TXT"
+  value   = "v=spf1 include:spf.messagingengine.com ?all"
+  ttl     = 1 # automatic
+}
+
 # SSL
 
 resource "cloudflare_record" "git_bytes_zone_caa" {
