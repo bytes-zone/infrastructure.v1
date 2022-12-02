@@ -93,17 +93,12 @@
 
     appName = "Git in the Bytes Zone";
 
-    # only for people I invite!
-    disableRegistration = true;
-
     rootUrl = "https://git.bytes.zone";
 
-    ssh = {
-      enable = true;
-      clonePort = 2222;
-    };
-
     settings = {
+      # only for people I invite!
+      service.DISABLE_REGISTRATION = true;
+
       ui.DEFAULT_THEME = "gitea";
 
       server = {
@@ -111,6 +106,7 @@
 
         # ssh
         START_SSH_SERVER = true;
+        SSH_PORT = 2222;
         BUILTIN_SSH_SERVER_USER = "git";
 
         # gitea
@@ -134,14 +130,13 @@
       };
 
       log = {
+        LEVEL = "Warn";
         ENABLE_XORM_LOG = false;
         ENABLE_ACCESS_LOG = false;
       };
 
       other.SHOW_FOOTER_BRANDING = false;
     };
-
-    log.level = "Warn";
   };
 
   ## Nginx
