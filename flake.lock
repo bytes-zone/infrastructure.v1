@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1670940554,
-        "narHash": "sha256-d36BxXkBaMvRhZWqvtnGeSQT4z2zpPrtxzJvlVYryFQ=",
+        "lastModified": 1670941347,
+        "narHash": "sha256-8LjOoJ2vDfmOMz88Ig/WCLYH4hoYdnKMcosi/nGUqCs=",
         "ref": "main",
-        "rev": "6eff9bba638b208758613063812a3446876d297d",
-        "revCount": 178,
+        "rev": "274948e630e44d056059595a7a8b205015d1b344",
+        "revCount": 184,
         "type": "git",
         "url": "https://git.bytes.zone/bytes.zone/bytes.zone.git"
       },
