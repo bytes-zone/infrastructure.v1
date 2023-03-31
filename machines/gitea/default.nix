@@ -135,7 +135,7 @@
       };
 
       log = {
-        LEVEL = "Warn";
+        LEVEL = "Error";
         ENABLE_XORM_LOG = false;
         ENABLE_ACCESS_LOG = false;
       };
