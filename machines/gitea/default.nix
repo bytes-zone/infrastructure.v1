@@ -79,6 +79,7 @@
     enable = true;
     port = 6379;
     databases = 2;
+    logLevel = "warning";
   };
 
   ## Gitea
