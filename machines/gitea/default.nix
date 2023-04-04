@@ -35,7 +35,7 @@
   ## nix
   nix = {
     gc.automatic = true;
-    settings.trusted-users = [ "root" "brian" ];
+    settings.trusted-users = [ "root" "@wheel" ];
   };
 
   ## Security Stuff
