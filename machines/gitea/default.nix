@@ -315,10 +315,8 @@
     after = [ "network.target" ];
 
     path = [ pkgs.goatcounter ];
-    preStart =
-      "goatcounter migrate -db 'postgres://user=goatcounter dbname=goatcounter host=/run/postgresql'";
     script =
-      "goatcounter serve -db 'postgres://user=goatcounter dbname=goatcounter host=/run/postgresql' -listen localhost:8081 -tls none";
+      "goatcounter serve -automigrate -db 'postgres://user=goatcounter dbname=goatcounter host=/run/postgresql' -listen localhost:8081 -tls none";
 
     serviceConfig = {
       User = "goatcounter";
