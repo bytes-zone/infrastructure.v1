@@ -306,7 +306,7 @@
   };
 
   systemd.services.goatcounter = {
-    description = "Privacy-preserving web analytics";
+    description = "goatcounter, privacy-preserving web analytics";
     documentation = [ "https://github.com/zgoat/goatcounter" ];
 
     enable = true;
