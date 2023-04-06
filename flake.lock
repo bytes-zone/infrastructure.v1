@@ -129,16 +129,16 @@
     "goatcounter": {
       "flake": false,
       "locked": {
-        "lastModified": 1605021223,
-        "narHash": "sha256-XL16ryJmb0O+rvCP332fFSM0CrxoviBXwUKIwiFjG7Q=",
+        "lastModified": 1617373001,
+        "narHash": "sha256-JH/l0H2SjYxWRNMG5RBS5ogAiYqj9qHguo0jCwEk/Eo=",
         "owner": "zgoat",
         "repo": "goatcounter",
-        "rev": "9303ec02e214354a6c85e9868cba79e4d9abb818",
+        "rev": "2283268fc4c4b9a0381d44aa9c91c844c33a67e9",
         "type": "github"
       },
       "original": {
         "owner": "zgoat",
-        "ref": "release-1.4",
+        "ref": "release-2.0",
         "repo": "goatcounter",
         "type": "github"
       }

@@ -17,7 +17,7 @@
     elo-anything.inputs.nixpkgs.follows = "nixpkgs";
 
     goatcounter = {
-      url = "github:zgoat/goatcounter/release-1.4";
+      url = "github:zgoat/goatcounter/release-2.0";
       flake = false;
     };
 
@@ -49,7 +49,7 @@
               subPackages = [ "cmd/goatcounter" ];
 
               vendorSha256 =
-                "0zd994rccrsmg54jygd3spqzk4ahcqyffzpzqgjiw939hlbxvb6s";
+                "sha256-z9SoAASihdTo2Q23hwo78SU76jVD4jvA0UVhredidOQ=";
 
               doCheck = false;
             };
