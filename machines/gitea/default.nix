@@ -31,6 +31,7 @@
     pkgs.kakoune-unwrapped
     pkgs.sysz
     (
+      # from https://nixos.org/manual/nixos/stable/index.html#module-services-postgres-upgrading
       let newPostgres = pkgs.postgresql_15;
       in pkgs.writeScriptBin "upgrade-pg-cluster" ''
         set -eux
