@@ -71,7 +71,10 @@
             };
           })
         ];
-    in {
+    in
+    {
+      formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
+
       nixosConfigurations.gitea = inputs.nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
 
@@ -81,15 +84,16 @@
         ];
       };
 
-      devShells = builtins.listToAttrs (map (system:
-        let pkgs = import inputs.nixpkgs { inherit system; };
-        in {
-          name = system;
-          value = {
-            default = pkgs.mkShell {
-              buildInputs = with pkgs; [ git terraform graphviz borgbackup pv ];
+      devShells = builtins.listToAttrs (map
+        (system:
+          let pkgs = import inputs.nixpkgs { inherit system; };
+          in {
+            name = system;
+            value = {
+              default = pkgs.mkShell {
+                buildInputs = with pkgs; [ git terraform graphviz borgbackup pv ];
+              };
             };
-          };
-        }) [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ]);
+          }) [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ]);
     };
 }
