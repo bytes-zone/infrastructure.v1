@@ -76,12 +76,7 @@
   # repo data itself.)
   services.postgresql = {
     enable = true;
-    package = pkgs.postgresql_11;
-
-    # it might not be the *best* to host this on an external volume but it
-    # works OK for now. If things prove to be painfully slow as the server
-    # grows, it may have to move.
-    dataDir = "/mnt/db/data";
+    package = pkgs.postgresql_15;
 
     # we don't allow network login, even over localhost. That means that all
     # our logins are tied to system users.
