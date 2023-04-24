@@ -131,13 +131,13 @@
       "locked": {
         "lastModified": 1668548895,
         "narHash": "sha256-L4310L+L2Qn8NkRMqze7KNwZ18LXz8PAoXCCpYa5J4I=",
-        "owner": "zgoat",
+        "owner": "arp242",
         "repo": "goatcounter",
         "rev": "b4126b7165aa65a17353e06ef0b7bf7127d76004",
         "type": "github"
       },
       "original": {
-        "owner": "zgoat",
+        "owner": "arp242",
         "ref": "release-2.4",
         "repo": "goatcounter",
         "type": "github"

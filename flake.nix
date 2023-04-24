@@ -17,7 +17,7 @@
     elo-anything.inputs.nixpkgs.follows = "nixpkgs";
 
     goatcounter = {
-      url = "github:zgoat/goatcounter/release-2.4";
+      url = "github:arp242/goatcounter/release-2.4";
       flake = false;
     };
 
