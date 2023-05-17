@@ -129,17 +129,17 @@
     "goatcounter": {
       "flake": false,
       "locked": {
-        "lastModified": 1668548895,
-        "narHash": "sha256-L4310L+L2Qn8NkRMqze7KNwZ18LXz8PAoXCCpYa5J4I=",
+        "lastModified": 1684357880,
+        "narHash": "sha256-DiMwaYmwBbtDYaGfCjWswyFtIphto3W+D6HopxieUDY=",
         "owner": "arp242",
         "repo": "goatcounter",
-        "rev": "b4126b7165aa65a17353e06ef0b7bf7127d76004",
+        "rev": "2b0f6e8938c57c8ebe3a4e5fdf26cf21cc2d1189",
         "type": "github"
       },
       "original": {
         "owner": "arp242",
-        "ref": "release-2.4",
         "repo": "goatcounter",
+        "rev": "2b0f6e8938c57c8ebe3a4e5fdf26cf21cc2d1189",
         "type": "github"
       }
     },
@@ -167,11 +167,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1684334906,
-        "narHash": "sha256-psIJn2MZRidtLb7XOX6u3W6+D4UgMR+f4zPtqYRXj8g=",
+        "lastModified": 1684354706,
+        "narHash": "sha256-pmSGXwdcFrBH3gnrZAk9WFxjkE11affpSABUBsGPy/M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "bc5d9d7653c80878f9eb31634020c5c3f8906459",
+        "rev": "1b2353619ebb9162666cf7bbd14b853cdf5301ed",
         "type": "github"
       },
       "original": {
