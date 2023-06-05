@@ -6,7 +6,7 @@
 
   system.stateVersion = "19.09";
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
   networking.hostName = "gitea";
   networking.firewall.allowPing = true;
 
@@ -20,7 +20,7 @@
 
   services.openssh = {
     enable = true;
-    logLevel = "ERROR";
+    settings.LogLevel = "ERROR";
   };
 
   # utilities
@@ -130,8 +130,6 @@
 
     appName = "Git in the Bytes Zone";
 
-    rootUrl = "https://git.bytes.zone";
-
     settings = {
       # only for people I invite!
       service.DISABLE_REGISTRATION = true;
@@ -139,6 +137,8 @@
       ui.DEFAULT_THEME = "gitea";
 
       server = {
+        ROOT_URL = "https://git.bytes.zone";
+
         LANDING_PAGE = "explore";
 
         # ssh
@@ -148,7 +148,10 @@
 
         # gitea
         LFS_START_SERVER = true;
-        LFS_CONTENT_PATH = "/mnt/objects/gitea/lfs";
+      };
+
+      lfs = {
+        PATH = "/mnt/objects/gitea/lfs";
       };
 
       attachment = {
