@@ -296,6 +296,13 @@
     encryption.mode = "repokey-blake2";
     encryption.passCommand = "cat /root/.ssh/borgbackup_key";
     environment.BORG_RSH = "ssh -i /root/.ssh/borgbackup_ed25519";
+
+    prune.keep = {
+      within = "1d";
+      daily = 7;
+      weekly = 4;
+      monthly = -1;
+    };
   };
 
   ## goatcounter
