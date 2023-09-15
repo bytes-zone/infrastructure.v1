@@ -145,12 +145,10 @@
         START_SSH_SERVER = true;
         SSH_PORT = 2222;
         BUILTIN_SSH_SERVER_USER = "git";
-
-        # gitea
-        LFS_START_SERVER = true;
       };
 
       lfs = {
+        enable = true;
         PATH = "/mnt/objects/gitea/lfs";
       };
 
