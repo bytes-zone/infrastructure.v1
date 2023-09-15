@@ -2,7 +2,7 @@
   description = "bytes.zone infrastructure";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
 
     bad-datalog.url =
       "git+https://git.bytes.zone/brian/bad-datalog.git?ref=main";
