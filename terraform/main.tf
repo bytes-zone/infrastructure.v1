@@ -43,7 +43,7 @@ resource "digitalocean_volume" "gitea_db" {
 
 resource "digitalocean_volume" "gitea_objects" {
   name                     = "gitea_objects"
-  size                     = 10
+  size                     = 20
   description              = "git+lfs object storage for gitea"
   initial_filesystem_type  = "ext4"
   initial_filesystem_label = "objects"
