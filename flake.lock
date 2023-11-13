@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1696934149,
-        "narHash": "sha256-VM72SYwainKY0LGCUqj1KfXQ5Pj19WtxSkFFoO95GDM=",
+        "lastModified": 1699875741,
+        "narHash": "sha256-VYq7EOz0/XtwrQpOLuC2oTg4BwvFcMRmeENuA0lZNgM=",
         "ref": "main",
-        "rev": "a3bac1aa47186ac7cf861fb611a9d24f5db58d25",
-        "revCount": 299,
+        "rev": "d5bc9fbd63c6a49bc0d9fd246f7dadc744f8aa70",
+        "revCount": 301,
         "type": "git",
         "url": "https://git.bytes.zone/bytes.zone/bytes.zone.git"
       },
@@ -86,11 +86,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1692799911,
-        "narHash": "sha256-3eihraek4qL744EvQXsK1Ha6C3CR7nnT8X2qWap4RNk=",
+        "lastModified": 1694529238,
+        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "f9e7cf818399d17d347f847525c5a5a8032e4e44",
+        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
         "type": "github"
       },
       "original": {
