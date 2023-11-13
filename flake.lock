@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1696865489,
-        "narHash": "sha256-patoyIGuuNHlnL9s+ko7r/EYytFWiZ9747Z4Qus2U+Y=",
+        "lastModified": 1696934149,
+        "narHash": "sha256-VM72SYwainKY0LGCUqj1KfXQ5Pj19WtxSkFFoO95GDM=",
         "ref": "main",
-        "rev": "5c530d229d421c3e85d5909c64a23c4824a9b6e6",
-        "revCount": 297,
+        "rev": "a3bac1aa47186ac7cf861fb611a9d24f5db58d25",
+        "revCount": 299,
         "type": "git",
         "url": "https://git.bytes.zone/bytes.zone/bytes.zone.git"
       },
@@ -170,11 +170,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1696815342,
-        "narHash": "sha256-MHA0Ye0PaFF6pay6tP9yMgwWvuqRraa9bH45U88RwC4=",
+        "lastModified": 1699837324,
+        "narHash": "sha256-Q8eKLPmJzyvy+82twLNub15pZmvZYnchlqS1Y9hjD4A=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8be69c1764f58e07099e4a24b926f49bbada8c7f",
+        "rev": "241b21797176cf5bb6936ee8d57025b914ecccce",
         "type": "github"
       },
       "original": {
