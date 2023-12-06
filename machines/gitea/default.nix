@@ -96,11 +96,11 @@
     ensureUsers = [
       {
         name = "gitea";
-        ensurePermissions = { "DATABASE gitea" = "ALL PRIVILEGES"; };
+        ensureDBOwnership = true;
       }
       {
         name = "goatcounter";
-        ensurePermissions = { "DATABASE goatcounter" = "ALL PRIVILEGES"; };
+        ensureDBOwnership = true;
       }
     ];
   };
