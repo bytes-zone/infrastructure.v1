@@ -86,7 +86,10 @@
 
       devShells = builtins.listToAttrs (map
         (system:
-          let pkgs = import inputs.nixpkgs { inherit system; };
+          let pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true; # for Terraform
+          };
           in {
             name = system;
             value = {
