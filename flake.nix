@@ -48,7 +48,7 @@
 
               subPackages = [ "cmd/goatcounter" ];
 
-              vendorSha256 =
+              vendorHash =
                 "sha256-c+VRTcNXHjKJsaEi0zAlAc2Zys5Mbi0pyFjKsbV+JXc=";
 
               doCheck = false;
