@@ -83,15 +83,6 @@ data "cloudflare_zones" "bytes_zone" {
   }
 }
 
-resource "cloudflare_record" "bytes_zone" {
-  zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
-  name    = ""
-  type    = "A"
-  value   = digitalocean_droplet.gitea.ipv4_address
-  ttl     = 1 # automatic
-  proxied = false
-}
-
 resource "cloudflare_record" "www_bytes_zone" {
   zone_id = data.cloudflare_zones.bytes_zone.zones[0].id
   name    = "www"
