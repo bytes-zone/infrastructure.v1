@@ -1,180 +1,12 @@
 {
   "nodes": {
-    "bad-datalog": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1631615263,
-        "narHash": "sha256-UXaD4Tvcp18VQGLDKhDVKbJ3q8X/PNuxYbhCIyX0o3Q=",
-        "ref": "main",
-        "rev": "4f55a607d42437ac6a331e52d710c9660738bdce",
-        "revCount": 320,
-        "type": "git",
-        "url": "https://git.bytes.zone/brian/bad-datalog.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://git.bytes.zone/brian/bad-datalog.git"
-      }
-    },
-    "bytes-zone": {
-      "inputs": {
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1708355770,
-        "narHash": "sha256-mspN2HWU/klDbTLafTv3MAbbdc6t+0JeYxHZ1AM92cY=",
-        "ref": "main",
-        "rev": "8b779d4afe4aec5a7af083a6cb4c2530ce718e24",
-        "revCount": 339,
-        "type": "git",
-        "url": "https://git.bytes.zone/bytes.zone/bytes.zone.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://git.bytes.zone/bytes.zone/bytes.zone.git"
-      }
-    },
-    "elo-anything": {
-      "inputs": {
-        "flake-utils": "flake-utils_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1631623581,
-        "narHash": "sha256-xQKx1u+f1oB21WFUZL4+YsqsmIz8lZ6XxINpLfKmZnk=",
-        "ref": "main",
-        "rev": "e0822f1208d85f48b458f1cb13c73987973cdddb",
-        "revCount": 136,
-        "type": "git",
-        "url": "https://git.bytes.zone/brian/elo-anything.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://git.bytes.zone/brian/elo-anything.git"
-      }
-    },
-    "flake-utils": {
-      "locked": {
-        "lastModified": 1631561581,
-        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_2": {
-      "inputs": {
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1705309234,
-        "narHash": "sha256-uNRRNRKmJyCRC/8y1RqBkqWBLM034y4qN7EprSdmgyA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "1ef2e671c3b0c19053962c07dbda38332dcebf26",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_3": {
-      "locked": {
-        "lastModified": 1631561581,
-        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_4": {
-      "locked": {
-        "lastModified": 1644229661,
-        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "goatcounter": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1684357880,
-        "narHash": "sha256-DiMwaYmwBbtDYaGfCjWswyFtIphto3W+D6HopxieUDY=",
-        "owner": "arp242",
-        "repo": "goatcounter",
-        "rev": "2b0f6e8938c57c8ebe3a4e5fdf26cf21cc2d1189",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arp242",
-        "repo": "goatcounter",
-        "rev": "2b0f6e8938c57c8ebe3a4e5fdf26cf21cc2d1189",
-        "type": "github"
-      }
-    },
-    "nates-mazes": {
-      "inputs": {
-        "flake-utils": "flake-utils_4",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1645823761,
-        "narHash": "sha256-Vq9vMcK1IFO8R1rKFWJw9vGWO9QMw3mawZcOYnEmOss=",
-        "ref": "main",
-        "rev": "9a00e919c85ecd7b17db1677595fd4aea5f83780",
-        "revCount": 129,
-        "type": "git",
-        "url": "https://git.bytes.zone/brian/nates-mazes.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://git.bytes.zone/brian/nates-mazes.git"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1708353490,
-        "narHash": "sha256-PAZZCyg5VK+PD4cpG2ueSLAjGTjUJiMMSUrRctM7CiY=",
+        "lastModified": 1709109948,
+        "narHash": "sha256-yydozE0BA/7Gyn3zAJSOyq5yDf6N0gOviZl+tasWg6Q=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f74663f3fbba3fc2134233b18d30e09038c76fa2",
+        "rev": "f119075956db8904f99a0419ecfb17c45f6d9085",
         "type": "github"
       },
       "original": {
@@ -186,28 +18,8 @@
     },
     "root": {
       "inputs": {
-        "bad-datalog": "bad-datalog",
-        "bytes-zone": "bytes-zone",
-        "elo-anything": "elo-anything",
-        "goatcounter": "goatcounter",
-        "nates-mazes": "nates-mazes",
         "nixpkgs": "nixpkgs",
         "sysz": "sysz"
-      }
-    },
-    "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
       }
     },
     "sysz": {
