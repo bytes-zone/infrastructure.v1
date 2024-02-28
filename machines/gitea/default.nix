@@ -216,16 +216,6 @@
       root = ./2020.elm-conf.com;
     };
 
-    virtualHosts."datalog.bytes.zone" = {
-      forceSSL = true;
-      enableACME = true;
-
-      root = "${pkgs.bad-datalog}/share/bad-datalog";
-      extraConfig = ''
-        try_files $uri /index.html;
-      '';
-    };
-
     virtualHosts."bytes.zone" = {
       forceSSL = true;
       enableACME = true;
