@@ -27,7 +27,6 @@
   environment.systemPackages = [
     pkgs.comma
     pkgs.goaccess
-    pkgs.goatcounter
     pkgs.kakoune-unwrapped
     pkgs.sysz
     (
@@ -86,20 +85,15 @@
       nixos root        postgres
       nixos postgres    postgres
       nixos gitea       gitea
-      nixos goatcounter goatcounter
     '';
     authentication = "local all all ident map=nixos";
 
     # I could have done all this by hand, but I didn't have to because Nixos is
     # nice. ❤️
-    ensureDatabases = [ "gitea" "goatcounter" ];
+    ensureDatabases = [ "gitea" ];
     ensureUsers = [
       {
         name = "gitea";
-        ensureDBOwnership = true;
-      }
-      {
-        name = "goatcounter";
         ensureDBOwnership = true;
       }
     ];
@@ -222,13 +216,6 @@
 
       globalRedirect = "https://bytes.zone";
     };
-
-    virtualHosts."stats.bytes.zone" = {
-      enableACME = true;
-      forceSSL = true;
-
-      locations."/".proxyPass = "http://localhost:8081";
-    };
   };
 
   security.acme = {
@@ -261,32 +248,6 @@
       daily = 7;
       weekly = 4;
       monthly = -1;
-    };
-  };
-
-  ## goatcounter
-  users.groups.goatcounter = { };
-  users.users.goatcounter = {
-    isSystemUser = true;
-    group = "goatcounter";
-  };
-
-  systemd.services.goatcounter = {
-    description = "goatcounter, privacy-preserving web analytics";
-    documentation = [ "https://github.com/zgoat/goatcounter" ];
-
-    enable = true;
-
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-
-    path = [ pkgs.goatcounter ];
-    script =
-      "goatcounter serve -automigrate -db 'postgres://user=goatcounter dbname=goatcounter host=/run/postgresql' -listen localhost:8081 -tls none";
-
-    serviceConfig = {
-      User = "goatcounter";
-      Group = "goatcounter";
     };
   };
 }
