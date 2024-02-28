@@ -216,13 +216,6 @@
       root = ./2020.elm-conf.com;
     };
 
-    virtualHosts."elo.bytes.zone" = {
-      forceSSL = true;
-      enableACME = true;
-
-      root = "${pkgs.elo-anything}/share/elo-anything";
-    };
-
     virtualHosts."datalog.bytes.zone" = {
       forceSSL = true;
       enableACME = true;
